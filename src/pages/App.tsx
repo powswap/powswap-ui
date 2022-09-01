@@ -176,8 +176,8 @@ export default function App() {
                   /> */}
                   {/* <Route path="create-proposal" element={<Navigate to="/vote/create-proposal" replace />} /> */}
                   {/* <Route path="claim" element={<OpenClaimAddressModalAndRedirectToSwap />} /> */}
-                  <Route path="uni" element={<Earn />} />
-                  <Route path="uni/:currencyIdA/:currencyIdB" element={<Manage />} />
+                  <Route path="farm" element={<Earn />} />
+                  <Route path="farm/:currencyIdA/:currencyIdB" element={<Manage />} />
 
                   <Route path="send" element={<RedirectPathToSwapOnly />} />
                   <Route path="swap/:outputCurrency" element={<RedirectToSwap />} />
