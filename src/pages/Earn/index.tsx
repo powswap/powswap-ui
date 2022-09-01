@@ -83,7 +83,8 @@ export default function Earn() {
               <RowBetween>
                 <ThemedText.DeprecatedWhite fontSize={14}>
                   <Trans>
-                    Deposit your Uniswap Liquidity Provider tokens to receive POW, the POW!Swap protocol governance token.
+                    Deposit your Uniswap Liquidity Provider tokens to receive POW, the POW!Swap protocol governance
+                    token.
                   </Trans>
                 </ThemedText.DeprecatedWhite>
               </RowBetween>{' '}
