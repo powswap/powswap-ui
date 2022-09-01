@@ -77,23 +77,23 @@ export default function Earn() {
             <AutoColumn gap="md">
               <RowBetween>
                 <ThemedText.DeprecatedWhite fontWeight={600}>
-                  <Trans>Uniswap liquidity mining</Trans>
+                  <Trans>Powswap liquidity mining</Trans>
                 </ThemedText.DeprecatedWhite>
               </RowBetween>
               <RowBetween>
                 <ThemedText.DeprecatedWhite fontSize={14}>
                   <Trans>
-                    Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token.
+                    Deposit your Uniswap Liquidity Provider tokens to receive POW, the POW!Swap protocol governance token.
                   </Trans>
                 </ThemedText.DeprecatedWhite>
               </RowBetween>{' '}
               <ExternalLink
                 style={{ color: theme.deprecated_white, textDecoration: 'underline' }}
-                href="https://uniswap.org/blog/uni/"
+                href="https://docs.powswap.org"
                 target="_blank"
               >
                 <ThemedText.DeprecatedWhite fontSize={14}>
-                  <Trans>Read more about UNI</Trans>
+                  <Trans>Read more about POW</Trans>
                 </ThemedText.DeprecatedWhite>
               </ExternalLink>
             </AutoColumn>
