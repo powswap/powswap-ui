@@ -35,7 +35,6 @@ import { LoadingTokenDetails } from './TokenDetails'
 import Tokens, { LoadingTokens } from './Tokens'
 
 const TokenDetails = lazy(() => import('./TokenDetails'))
-const Vote = lazy(() => import('./Vote'))
 
 const AppWrapper = styled.div`
   display: flex;

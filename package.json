@@ -1,7 +1,7 @@
 {
-  "name": "@uniswap/interface",
+  "name": "@powswap/powswap-ui",
   "version": "1.0.7",
-  "description": "Uniswap Interface",
+  "description": "POW!Swap UI",
   "homepage": ".",
   "license": "GPL-3.0-or-later",
   "scripts": {
