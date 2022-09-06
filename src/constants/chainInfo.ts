@@ -104,6 +104,16 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Görli Ether', symbol: 'görETH', decimals: 18 },
     color: colorsDark.chain_5,
   },
+  [SupportedChainId.ETHW_ICEBERG]: {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://http://iceberg.ethwscan.com/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'ETHW Iceberg',
+    logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: 'Iceberg ETHW', symbol: 'iceETHW', decimals: 18 },
+    color: colorsDark.chain_5,
+  },
   [SupportedChainId.OPTIMISM]: {
     networkType: NetworkType.L2,
     blockWaitMsBeforeWarning: ms`25m`,
