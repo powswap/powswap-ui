@@ -25,7 +25,7 @@ import { useTotalSupply } from '../../hooks/useTotalSupply'
 import { useV2Pair } from '../../hooks/useV2Pairs'
 import { useToggleWalletModal } from '../../state/application/hooks'
 import { useTokenBalance } from '../../state/connection/hooks'
-import { useStakingInfo } from '../../state/stake/hooks'
+import { useStakingInfoV2 } from '../../state/stake/hooks'
 import { ThemedText } from '../../theme'
 import { currencyId } from '../../utils/currencyId'
 
@@ -109,7 +109,7 @@ export default function Manage() {
   const tokenB = (currencyB ?? undefined)?.wrapped
 
   const [, stakingTokenPair] = useV2Pair(tokenA, tokenB)
-  const stakingInfo = useStakingInfo(stakingTokenPair)?.[0]
+  const stakingInfo = useStakingInfoV2(stakingTokenPair)?.[0]
 
   // detect existing unstaked LP position to show add button if none found
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, stakingInfo?.stakedAmount?.currency)
@@ -195,10 +195,10 @@ export default function Manage() {
               {stakingInfo?.active ? (
                 <Trans>
                   {stakingInfo.totalRewardRate?.multiply(BIG_INT_SECONDS_IN_WEEK)?.toFixed(0, { groupSeparator: ',' })}{' '}
-                  UNI / week
+                  POW / week
                 </Trans>
               ) : (
-                <Trans>0 UNI / week</Trans>
+                <Trans>0 POW / week</Trans>
               )}
             </ThemedText.DeprecatedBody>
           </AutoColumn>
@@ -295,7 +295,7 @@ export default function Manage() {
               <RowBetween>
                 <div>
                   <ThemedText.DeprecatedBlack>
-                    <Trans>Your unclaimed UNI</Trans>
+                    <Trans>Your unclaimed POW</Trans>
                   </ThemedText.DeprecatedBlack>
                 </div>
                 {stakingInfo?.earnedAmount && JSBI.notEqual(BIG_INT_ZERO, stakingInfo?.earnedAmount?.quotient) && (
@@ -329,10 +329,10 @@ export default function Manage() {
                   {stakingInfo?.active ? (
                     <Trans>
                       {stakingInfo.rewardRate?.multiply(BIG_INT_SECONDS_IN_WEEK)?.toFixed(0, { groupSeparator: ',' })}{' '}
-                      UNI / week
+                      POW / week
                     </Trans>
                   ) : (
-                    <Trans>0 UNI / week</Trans>
+                    <Trans>0 POW / week</Trans>
                   )}
                 </ThemedText.DeprecatedBlack>
               </RowBetween>
@@ -343,7 +343,7 @@ export default function Manage() {
           <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px' }}>
             ⭐️
           </span>
-          <Trans>When you withdraw, the contract will automagically claim UNI on your behalf!</Trans>
+          <Trans>When you withdraw, the contract will automagically claim POW on your behalf!</Trans>
         </ThemedText.DeprecatedMain>
 
         {!showAddLiquidityButton && (

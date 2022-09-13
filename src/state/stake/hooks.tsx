@@ -161,8 +161,7 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
 
   pools.forEach((pool, index) => {
     if (!chainId || !POWSWAP_DEPLOYMENTS[chainId]) return
-    if (!poolInfos[index].result || !userInfos[index].result || !poolBalances[index].result || !totalAllocPoint.result)
-      return
+    if (!poolInfos[index].result || !poolBalances[index].result || !totalAllocPoint.result) return
     if (!powToken) return
     const totalRewardPerBlock = JSBI.multiply(
       POWSWAP_DEPLOYMENTS[chainId].sushiPerBlock,
