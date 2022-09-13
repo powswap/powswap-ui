@@ -1,19 +1,72 @@
 import { Interface } from '@ethersproject/abi'
+import { Contract } from '@ethersproject/contracts'
 import { Trans } from '@lingui/macro'
 import { abi as STAKING_REWARDS_ABI } from '@uniswap/liquidity-staker/build/StakingRewards.json'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
+import ERC20ABI from 'abis/erc20.json'
+import { abi as MASTERCHEF_ABI } from 'abis/MasterChef.json'
+import { Erc20Interface } from 'abis/types/Erc20'
 import { SupportedChainId } from 'constants/chains'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import JSBI from 'jsbi'
-import { NEVER_RELOAD, useMultipleContractSingleData } from 'lib/hooks/multicall'
+import {
+  NEVER_RELOAD,
+  useMultipleContractSingleData,
+  useSingleCallResult,
+  useSingleContractMultipleData,
+} from 'lib/hooks/multicall'
 import tryParseCurrencyAmount from 'lib/utils/tryParseCurrencyAmount'
 import { ReactNode, useMemo } from 'react'
 
-import { DAI, UNI, USDC_MAINNET, USDT, WBTC, WRAPPED_NATIVE_CURRENCY } from '../../constants/tokens'
+import {
+  DAI,
+  POW_GOERLI,
+  UNI,
+  UNI_GOERLI,
+  USDC_MAINNET,
+  USDT,
+  WBTC,
+  WRAPPED_NATIVE_CURRENCY,
+} from '../../constants/tokens'
+
+export const MASTERCHEF_ADDRESS: {
+  [chainId: number]: string
+} = {
+  5: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
+}
+
+export const POWSWAP_DEPLOYMENTS: {
+  [chainId: number]: {
+    masterchefAddress: string
+    sushiPerBlock: JSBI
+    powToken: Token
+    pools: {
+      lpTokenAddress: string
+      token0: Token
+      token1: Token
+    }[]
+  }
+} = {
+  5: {
+    masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
+    sushiPerBlock: JSBI.BigInt('1000000000000000000000'),
+    powToken: POW_GOERLI,
+    pools: [
+      {
+        lpTokenAddress: '0x28cee28a7C4b4022AC92685C07d2f33Ab1A0e122',
+        token0: UNI_GOERLI,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
+      },
+    ],
+  },
+}
 
 const STAKING_REWARDS_INTERFACE = new Interface(STAKING_REWARDS_ABI)
+const MASTERCHEF_INTERFACE = new Interface(MASTERCHEF_ABI)
+const AVERAGE_BLOCKTIME = 13.5
+const ERC20Interface = new Interface(ERC20ABI) as Erc20Interface
 
 export const STAKING_GENESIS = 1600387200
 
@@ -71,6 +124,105 @@ export interface StakingInfo {
     totalStakedAmount: CurrencyAmount<Token>,
     totalRewardRate: CurrencyAmount<Token>
   ) => CurrencyAmount<Token>
+}
+
+// gets the staking info from the network for the active chain id
+export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
+  const { chainId, account } = useWeb3React()
+
+  const MASTERCHEF_CONTRACT =
+    chainId && MASTERCHEF_ADDRESS[chainId] ? new Contract(MASTERCHEF_ADDRESS[chainId], MASTERCHEF_INTERFACE) : undefined
+
+  const pools = chainId && POWSWAP_DEPLOYMENTS[chainId] ? POWSWAP_DEPLOYMENTS[chainId].pools : []
+
+  const powToken = chainId && POWSWAP_DEPLOYMENTS[chainId] ? POWSWAP_DEPLOYMENTS[chainId].powToken : null
+
+  // detect if staking is ended
+  const currentBlockTimestamp = useCurrentBlockTimestamp()
+
+  const poolInfoArgs = Array.from(Array(pools.length).keys()).map((value) => [value])
+  const poolInfos = useSingleContractMultipleData(MASTERCHEF_CONTRACT, 'poolInfo', poolInfoArgs)
+
+  const userInfoArgs = Array.from(Array(pools.length).keys()).map((value) => [value, account])
+  const userInfos = useSingleContractMultipleData(MASTERCHEF_CONTRACT, 'userInfo', userInfoArgs)
+
+  const poolBalances = useMultipleContractSingleData(
+    pools.map((pool) => pool.lpTokenAddress),
+    ERC20Interface,
+    'balanceOf',
+    [MASTERCHEF_CONTRACT?.address]
+  )
+
+  const pendingPow = useSingleContractMultipleData(MASTERCHEF_CONTRACT, 'pendingSushi', userInfoArgs)
+
+  const totalAllocPoint = useSingleCallResult(MASTERCHEF_CONTRACT, 'totalAllocPoint')
+
+  const stakingInfo: StakingInfo[] = []
+
+  pools.forEach((pool, index) => {
+    if (!chainId || !POWSWAP_DEPLOYMENTS[chainId]) return
+    if (!poolInfos[index].result || !userInfos[index].result || !poolBalances[index].result || !totalAllocPoint.result)
+      return
+    if (!powToken) return
+    const totalRewardPerBlock = JSBI.multiply(
+      POWSWAP_DEPLOYMENTS[chainId].sushiPerBlock,
+      JSBI.divide(JSBI.BigInt(poolInfos[index].result?.at(1)), JSBI.BigInt(totalAllocPoint.result[0]))
+    )
+
+    const dummyPair = new Pair(
+      CurrencyAmount.fromRawAmount(pool.token0, '0'),
+      CurrencyAmount.fromRawAmount(pool.token1, '0')
+    )
+    const totalRewardRate = CurrencyAmount.fromRawAmount(
+      powToken,
+      JSBI.multiply(JSBI.divide(totalRewardPerBlock, JSBI.BigInt(AVERAGE_BLOCKTIME * 10)), JSBI.BigInt(10))
+    )
+
+    const stakedAmount = CurrencyAmount.fromRawAmount(
+      dummyPair.liquidityToken,
+      JSBI.BigInt(userInfos[index].result?.[0] ?? 0)
+    )
+
+    const totalStakedAmount = CurrencyAmount.fromRawAmount(
+      dummyPair.liquidityToken,
+      JSBI.BigInt(poolBalances[index].result?.[0] ?? 0)
+    )
+
+    const getHypotheticalRewardRate = (
+      stakedAmount: CurrencyAmount<Token>,
+      totalStakedAmount: CurrencyAmount<Token>,
+      totalRewardRate: CurrencyAmount<Token>
+    ): CurrencyAmount<Token> => {
+      return CurrencyAmount.fromRawAmount(
+        powToken,
+        JSBI.greaterThan(totalStakedAmount.quotient, JSBI.BigInt(0))
+          ? JSBI.divide(JSBI.multiply(totalRewardRate.quotient, stakedAmount.quotient), totalStakedAmount.quotient)
+          : JSBI.BigInt(0)
+      )
+    }
+
+    const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate)
+
+    const earnedAmount = CurrencyAmount.fromRawAmount(
+      dummyPair.liquidityToken,
+      JSBI.BigInt(pendingPow[index].result?.[0] ?? 0)
+    )
+
+    stakingInfo.push({
+      stakingRewardAddress: MASTERCHEF_CONTRACT?.address || '',
+      tokens: [pool.token0, pool.token1],
+      periodFinish: undefined,
+      earnedAmount,
+      rewardRate: individualRewardRate,
+      totalRewardRate,
+      stakedAmount,
+      totalStakedAmount,
+      getHypotheticalRewardRate,
+      active: true,
+    })
+  })
+
+  return stakingInfo
 }
 
 // gets the staking info from the network for the active chain id

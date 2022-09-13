@@ -1,7 +1,6 @@
 import { Trans } from '@lingui/macro'
 import { useWeb3React } from '@web3-react/core'
 import { NavBarVariant, useNavBarFlag } from 'featureFlags/flags/navBar'
-import JSBI from 'jsbi'
 import styled, { useTheme } from 'styled-components/macro'
 
 import { OutlineCard } from '../../components/Card'
@@ -10,8 +9,7 @@ import PoolCard from '../../components/earn/PoolCard'
 import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled'
 import Loader from '../../components/Loader'
 import { RowBetween } from '../../components/Row'
-import { BIG_INT_ZERO } from '../../constants/misc'
-import { STAKING_REWARDS_INFO, useStakingInfo } from '../../state/stake/hooks'
+import { useStakingInfoV2 } from '../../state/stake/hooks'
 import { ExternalLink, ThemedText } from '../../theme'
 import { Countdown } from './Countdown'
 
@@ -56,16 +54,13 @@ export default function Earn() {
   const { chainId } = useWeb3React()
 
   // staking info for connected account
-  const stakingInfos = useStakingInfo()
-
-  /**
-   * only show staking cards with balance
-   * @todo only account for this if rewards are inactive
-   */
-  const stakingInfosWithBalance = stakingInfos?.filter((s) => JSBI.greaterThan(s.stakedAmount.quotient, BIG_INT_ZERO))
+  const stakingInfos = useStakingInfoV2()
+  //const infoV2 = useStakingInfoV2()
+  //console.log(infoV2)
 
   // toggle copy if rewards are inactive
-  const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
+  // const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
+  const stakingRewardsExist = true
 
   return (
     <PageWrapper gap="lg" justify="center" navBarFlag={navBarFlagEnabled}>
@@ -83,8 +78,7 @@ export default function Earn() {
               <RowBetween>
                 <ThemedText.DeprecatedWhite fontSize={14}>
                   <Trans>
-                    Deposit your Uniswap Liquidity Provider tokens to receive POW, the POW!Swap protocol governance
-                    token.
+                    Deposit your Liquidity Provider tokens to receive POW, the POW!Swap protocol governance token.
                   </Trans>
                 </ThemedText.DeprecatedWhite>
               </RowBetween>{' '}
@@ -115,16 +109,12 @@ export default function Earn() {
         <PoolSection>
           {stakingRewardsExist && stakingInfos?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
-          ) : !stakingRewardsExist ? (
-            <OutlineCard>
-              <Trans>No active pools</Trans>
-            </OutlineCard>
-          ) : stakingInfos?.length !== 0 && stakingInfosWithBalance.length === 0 ? (
+          ) : !stakingRewardsExist || stakingInfos?.length === 0 ? (
             <OutlineCard>
               <Trans>No active pools</Trans>
             </OutlineCard>
           ) : (
-            stakingInfosWithBalance?.map((stakingInfo) => {
+            stakingInfos?.map((stakingInfo) => {
               // need to sort by added liquidity here
               return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} />
             })

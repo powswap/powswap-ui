@@ -4,6 +4,16 @@ import invariant from 'tiny-invariant'
 import { UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
 
+export const POW_GOERLI = new Token(
+  SupportedChainId.GOERLI,
+  '0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb',
+  18,
+  'POW',
+  'POWSWAP'
+)
+
+export const UNI_GOERLI = new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')
+
 export const USDC_MAINNET = new Token(
   SupportedChainId.MAINNET,
   '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
