@@ -202,10 +202,7 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
 
     const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate)
 
-    const earnedAmount = CurrencyAmount.fromRawAmount(
-      dummyPair.liquidityToken,
-      JSBI.BigInt(pendingPow[index].result?.[0] ?? 0)
-    )
+    const earnedAmount = CurrencyAmount.fromRawAmount(powToken, JSBI.BigInt(pendingPow[index].result?.[0] ?? 0))
 
     stakingInfo.push({
       stakingRewardAddress: MASTERCHEF_CONTRACT?.address || '',
