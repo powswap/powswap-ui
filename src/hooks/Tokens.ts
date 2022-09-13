@@ -1,11 +1,9 @@
 import { Currency, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
-import { getChainInfo } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { useCurrencyFromMap, useTokenFromMapOrNetwork } from 'lib/hooks/useCurrency'
 import { getTokenFilter } from 'lib/hooks/useTokenList/filtering'
 import { useMemo } from 'react'
-import { isL2ChainId } from 'utils/chains'
 
 import { useAllLists, useCombinedActiveList, useInactiveListUrls } from '../state/lists/hooks'
 import { WrappedTokenInfo } from '../state/lists/wrappedTokenInfo'
@@ -71,38 +69,8 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
 
   // checks the default L2 lists to see if `bridgeInfo` has an L1 address value that is unsupported
   const l2InferredBlockedTokens: typeof unsupportedTokens = useMemo(() => {
-    if (!chainId || !isL2ChainId(chainId)) {
-      return {}
-    }
-
-    if (!listsByUrl) {
-      return {}
-    }
-
-    const listUrl = getChainInfo(chainId).defaultListUrl
-
-    const { current: list } = listsByUrl[listUrl]
-    if (!list) {
-      return {}
-    }
-
-    const unsupportedSet = new Set(Object.keys(unsupportedTokens))
-
-    return list.tokens.reduce((acc, tokenInfo) => {
-      const bridgeInfo = tokenInfo.extensions?.bridgeInfo as unknown as BridgeInfo
-      if (
-        bridgeInfo &&
-        bridgeInfo[SupportedChainId.MAINNET] &&
-        bridgeInfo[SupportedChainId.MAINNET].tokenAddress &&
-        unsupportedSet.has(bridgeInfo[SupportedChainId.MAINNET].tokenAddress)
-      ) {
-        const address = bridgeInfo[SupportedChainId.MAINNET].tokenAddress
-        // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
-        return { ...acc, [address]: new Token(SupportedChainId.MAINNET, address, tokenInfo.decimals) }
-      }
-      return acc
-    }, {})
-  }, [chainId, listsByUrl, unsupportedTokens])
+    return {}
+  }, [])
 
   return { ...unsupportedTokens, ...l2InferredBlockedTokens }
 }

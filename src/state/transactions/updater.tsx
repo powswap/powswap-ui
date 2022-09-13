@@ -11,7 +11,6 @@ import { InterfaceTrade } from 'state/routing/types'
 import { TransactionType } from 'state/transactions/types'
 import { computeRealizedPriceImpact } from 'utils/prices'
 
-import { L2_CHAIN_IDS } from '../../constants/chains'
 import { useDerivedSwapInfo } from '../../state/swap/hooks'
 import { useAddPopup } from '../application/hooks'
 import { checkedTransaction, finalizeTransaction } from './reducer'
@@ -47,7 +46,7 @@ export default function Updater() {
   const { chainId } = useWeb3React()
   const addPopup = useAddPopup()
   // speed up popup dismisall time if on L2
-  const isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
+  const isL2 = false
   const transactions = useAppSelector((state) => state.transactions)
   const {
     trade: { trade },

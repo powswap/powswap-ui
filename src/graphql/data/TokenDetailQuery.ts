@@ -8,12 +8,6 @@ export function chainIdToChainName(networkId: SupportedChainId): Chain {
   switch (networkId) {
     case SupportedChainId.MAINNET:
       return 'ETHEREUM'
-    case SupportedChainId.ARBITRUM_ONE:
-      return 'ARBITRUM'
-    case SupportedChainId.OPTIMISM:
-      return 'OPTIMISM'
-    case SupportedChainId.POLYGON:
-      return 'POLYGON'
     default:
       return 'ETHEREUM'
   }

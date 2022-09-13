@@ -7,27 +7,9 @@ import { RPC_URLS } from 'constants/networks'
 function getRpcUrls(chainId: SupportedChainId): [string] {
   switch (chainId) {
     case SupportedChainId.MAINNET:
-    case SupportedChainId.RINKEBY:
-    case SupportedChainId.ROPSTEN:
-    case SupportedChainId.KOVAN:
+    case SupportedChainId.ETHW:
     case SupportedChainId.GOERLI:
       return [RPC_URLS[chainId]]
-    case SupportedChainId.OPTIMISM:
-      return ['https://mainnet.optimism.io']
-    case SupportedChainId.OPTIMISTIC_KOVAN:
-      return ['https://kovan.optimism.io']
-    case SupportedChainId.ARBITRUM_ONE:
-      return ['https://arb1.arbitrum.io/rpc']
-    case SupportedChainId.ARBITRUM_RINKEBY:
-      return ['https://rinkeby.arbitrum.io/rpc']
-    case SupportedChainId.POLYGON:
-      return ['https://polygon-rpc.com/']
-    case SupportedChainId.POLYGON_MUMBAI:
-      return ['https://rpc-endpoints.superfluid.dev/mumbai']
-    case SupportedChainId.CELO:
-      return ['https://forno.celo.org']
-    case SupportedChainId.CELO_ALFAJORES:
-      return ['https://alfajores-forno.celo-testnet.org']
     default:
   }
   // Our API-keyed URLs will fail security checks when used with external wallets.

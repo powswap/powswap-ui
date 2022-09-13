@@ -1,7 +1,6 @@
 import { Trans } from '@lingui/macro'
 import { Percent } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
-import { L2_CHAIN_IDS } from 'constants/chains'
 import { DEFAULT_DEADLINE_FROM_NOW } from 'constants/misc'
 import { RedesignVariant, useRedesignFlag } from 'featureFlags/flags/redesign'
 import ms from 'ms.macro'
@@ -168,7 +167,7 @@ export default function TransactionSettings({ placeholderSlippage }: Transaction
     }
   }
 
-  const showCustomDeadlineRow = Boolean(chainId && !L2_CHAIN_IDS.includes(chainId))
+  const showCustomDeadlineRow = Boolean(chainId)
 
   return (
     <AutoColumn gap="md">

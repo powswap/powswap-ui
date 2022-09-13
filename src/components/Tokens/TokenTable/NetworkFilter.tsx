@@ -11,12 +11,7 @@ import styled, { useTheme } from 'styled-components/macro'
 import { MEDIUM_MEDIA_BREAKPOINT } from '../constants'
 import { filterNetworkAtom } from '../state'
 
-const NETWORKS = [
-  SupportedChainId.MAINNET,
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.POLYGON,
-  SupportedChainId.OPTIMISM,
-]
+const NETWORKS = [SupportedChainId.ETHW, SupportedChainId.MAINNET]
 
 const InternalMenuItem = styled.div`
   flex: 1;

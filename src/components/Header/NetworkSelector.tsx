@@ -174,35 +174,13 @@ const NetworkIcon = styled(AlertTriangle)`
 
 const BridgeLabel = ({ chainId }: { chainId: SupportedChainId }) => {
   switch (chainId) {
-    case SupportedChainId.ARBITRUM_ONE:
-    case SupportedChainId.ARBITRUM_RINKEBY:
-      return <Trans>Arbitrum Bridge</Trans>
-    case SupportedChainId.OPTIMISM:
-    case SupportedChainId.OPTIMISTIC_KOVAN:
-      return <Trans>Optimism Bridge</Trans>
-    case SupportedChainId.POLYGON:
-    case SupportedChainId.POLYGON_MUMBAI:
-      return <Trans>Polygon Bridge</Trans>
-    case SupportedChainId.CELO:
-    case SupportedChainId.CELO_ALFAJORES:
-      return <Trans>Portal Bridge</Trans>
     default:
       return <Trans>Bridge</Trans>
   }
 }
 const ExplorerLabel = ({ chainId }: { chainId: SupportedChainId }) => {
   switch (chainId) {
-    case SupportedChainId.ARBITRUM_ONE:
-    case SupportedChainId.ARBITRUM_RINKEBY:
-      return <Trans>Arbiscan</Trans>
-    case SupportedChainId.OPTIMISM:
-    case SupportedChainId.OPTIMISTIC_KOVAN:
-      return <Trans>Optimistic Etherscan</Trans>
-    case SupportedChainId.POLYGON:
-    case SupportedChainId.POLYGON_MUMBAI:
-      return <Trans>Polygonscan</Trans>
-    case SupportedChainId.CELO:
-    case SupportedChainId.CELO_ALFAJORES:
+    case SupportedChainId.ETHW:
       return <Trans>Blockscout</Trans>
     default:
       return <Trans>Etherscan</Trans>
@@ -271,13 +249,7 @@ function Row({
   return rowContent
 }
 
-const NETWORK_SELECTOR_CHAINS = [
-  SupportedChainId.MAINNET,
-  SupportedChainId.POLYGON,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.CELO,
-]
+const NETWORK_SELECTOR_CHAINS = [SupportedChainId.ETHW, SupportedChainId.MAINNET]
 
 export default function NetworkSelector() {
   const { chainId, provider } = useWeb3React()

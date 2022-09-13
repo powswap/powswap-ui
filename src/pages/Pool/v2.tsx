@@ -3,7 +3,6 @@ import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { PageName } from 'components/AmplitudeAnalytics/constants'
 import { Trace } from 'components/AmplitudeAnalytics/Trace'
-import { UNSUPPORTED_V2POOL_CHAIN_IDS } from 'constants/chains'
 import JSBI from 'jsbi'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
@@ -89,7 +88,7 @@ const Layer2Prompt = styled(EmptyProposals)`
 export default function Pool() {
   const theme = useTheme()
   const { account, chainId } = useWeb3React()
-  const unsupportedV2Network = chainId && UNSUPPORTED_V2POOL_CHAIN_IDS.includes(chainId)
+  const unsupportedV2Network = false
 
   // fetch the user's balances of all tracked V2 LP tokens
   let trackedTokenPairs = useTrackedTokenPairs()

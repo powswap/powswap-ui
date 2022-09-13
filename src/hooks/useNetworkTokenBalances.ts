@@ -25,17 +25,9 @@ export function useNetworkTokenBalances({ address }: useNetworkTokenBalancesArgs
   useEffect(() => {
     if (address) {
       const FAKE_TOKEN_NETWORK_BALANCES = {
-        [SupportedChainId.ARBITRUM_ONE]: CurrencyAmount.fromRawAmount(
-          new Token(SupportedChainId.ARBITRUM_ONE, address, 18),
-          10e18
-        ),
         [SupportedChainId.MAINNET]: CurrencyAmount.fromRawAmount(
           new Token(SupportedChainId.MAINNET, address, 18),
           1e18
-        ),
-        [SupportedChainId.RINKEBY]: CurrencyAmount.fromRawAmount(
-          new Token(SupportedChainId.RINKEBY, address, 9),
-          10e18
         ),
       }
 
