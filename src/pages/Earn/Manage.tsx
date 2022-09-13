@@ -8,7 +8,7 @@ import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { CountUp } from 'use-count-up'
 
-import { ButtonEmpty, ButtonPrimary } from '../../components/Button'
+import { ButtonPrimary } from '../../components/Button'
 import { AutoColumn } from '../../components/Column'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import ClaimRewardModal from '../../components/earn/ClaimRewardModal'
@@ -16,7 +16,7 @@ import StakingModal from '../../components/earn/StakingModal'
 import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled'
 import UnstakingModal from '../../components/earn/UnstakingModal'
 import { RowBetween } from '../../components/Row'
-import { BIG_INT_SECONDS_IN_WEEK, BIG_INT_ZERO } from '../../constants/misc'
+import { BIG_INT_SECONDS_IN_WEEK } from '../../constants/misc'
 import { useCurrency } from '../../hooks/Tokens'
 import { useColor } from '../../hooks/useColor'
 import usePrevious from '../../hooks/usePrevious'
@@ -298,16 +298,6 @@ export default function Manage() {
                     <Trans>Your unclaimed POW</Trans>
                   </ThemedText.DeprecatedBlack>
                 </div>
-                {stakingInfo?.earnedAmount && JSBI.notEqual(BIG_INT_ZERO, stakingInfo?.earnedAmount?.quotient) && (
-                  <ButtonEmpty
-                    padding="8px"
-                    $borderRadius="8px"
-                    width="fit-content"
-                    onClick={() => setShowClaimRewardModal(true)}
-                  >
-                    <Trans>Claim</Trans>
-                  </ButtonEmpty>
-                )}
               </RowBetween>
               <RowBetween style={{ alignItems: 'baseline' }}>
                 <ThemedText.DeprecatedLargeHeader fontSize={36} fontWeight={600}>
