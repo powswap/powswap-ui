@@ -6,12 +6,11 @@ import { Trace } from 'components/AmplitudeAnalytics/Trace'
 import { UNSUPPORTED_V2POOL_CHAIN_IDS } from 'constants/chains'
 import JSBI from 'jsbi'
 import { useMemo } from 'react'
-import { ChevronsRight } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { Text } from 'rebass'
 import styled, { useTheme } from 'styled-components/macro'
 
-import { ButtonOutlined, ButtonPrimary, ButtonSecondary } from '../../components/Button'
+import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
 import Card from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
 import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled'
@@ -228,16 +227,6 @@ export default function Pool() {
                   </EmptyProposals>
                 ) : allV2PairsWithLiquidity?.length > 0 || stakingPairs?.length > 0 ? (
                   <>
-                    <ButtonSecondary>
-                      <RowBetween>
-                        <Trans>
-                          <ExternalLink href={'https://v2.info.uniswap.org/account/' + account}>
-                            Account analytics and accrued fees
-                          </ExternalLink>
-                          <span> ↗ </span>
-                        </Trans>
-                      </RowBetween>
-                    </ButtonSecondary>
                     {v2PairsWithoutStakedAmount.map((v2Pair) => (
                       <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
                     ))}
@@ -251,23 +240,6 @@ export default function Pool() {
                           />
                         )
                     )}
-                    <RowFixed justify="center" style={{ width: '100%' }}>
-                      <ButtonOutlined
-                        as={Link}
-                        to="/migrate/v2"
-                        id="import-pool-link"
-                        style={{
-                          padding: '8px 16px',
-                          margin: '0 4px',
-                          borderRadius: '12px',
-                          width: 'fit-content',
-                          fontSize: '14px',
-                        }}
-                      >
-                        <ChevronsRight size={16} style={{ marginRight: '8px' }} />
-                        <Trans>Migrate Liquidity to V3</Trans>
-                      </ButtonOutlined>
-                    </RowFixed>
                   </>
                 ) : (
                   <EmptyProposals>
