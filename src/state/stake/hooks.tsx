@@ -51,7 +51,7 @@ export const POWSWAP_DEPLOYMENTS: {
 } = {
   5: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
-    sushiPerBlock: JSBI.BigInt('1000000000000000000000'),
+    sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
     powToken: POW_GOERLI,
     pools: [
       {
