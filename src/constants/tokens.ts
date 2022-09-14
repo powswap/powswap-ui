@@ -9,7 +9,23 @@ export const POW_GOERLI = new Token(
   '0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb',
   18,
   'POW',
-  'POWSWAP'
+  'Powswap'
+)
+
+export const POW_MAINNET = new Token(
+  SupportedChainId.GOERLI,
+  '0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb',
+  18,
+  'POW',
+  'Powswap'
+)
+
+export const POW_ETHW = new Token(
+  SupportedChainId.GOERLI,
+  '0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb',
+  18,
+  'POW',
+  'Powswap'
 )
 
 export const UNI_GOERLI = new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')

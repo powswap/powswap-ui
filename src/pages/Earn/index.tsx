@@ -9,7 +9,7 @@ import PoolCard from '../../components/earn/PoolCard'
 import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled'
 import Loader from '../../components/Loader'
 import { RowBetween } from '../../components/Row'
-import { useStakingInfoV2 } from '../../state/stake/hooks'
+import { POWSWAP_DEPLOYMENTS, useStakingInfoV2 } from '../../state/stake/hooks'
 import { ExternalLink, ThemedText } from '../../theme'
 import { Countdown } from './Countdown'
 
@@ -59,8 +59,9 @@ export default function Earn() {
   //console.log(infoV2)
 
   // toggle copy if rewards are inactive
-  // const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
-  const stakingRewardsExist = true
+  const stakingRewardsExist = Boolean(
+    typeof chainId === 'number' && (POWSWAP_DEPLOYMENTS[chainId]?.pools.length ?? 0) > 0
+  )
 
   return (
     <PageWrapper gap="lg" justify="center" navBarFlag={navBarFlagEnabled}>
@@ -103,7 +104,7 @@ export default function Earn() {
           <ThemedText.DeprecatedMediumHeader style={{ marginTop: '0.5rem' }}>
             <Trans>Participating pools</Trans>
           </ThemedText.DeprecatedMediumHeader>
-          <Countdown exactEnd={stakingInfos?.[0]?.periodFinish} />
+          <Countdown exactEnd={new Date(2022, 9, 21)} />
         </DataRow>
 
         <PoolSection>

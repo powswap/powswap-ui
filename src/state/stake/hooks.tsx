@@ -22,7 +22,9 @@ import { ReactNode, useMemo } from 'react'
 
 import {
   DAI,
+  POW_ETHW,
   POW_GOERLI,
+  POW_MAINNET,
   UNI,
   UNI_GOERLI,
   USDC_MAINNET,
@@ -34,6 +36,8 @@ import {
 export const MASTERCHEF_ADDRESS: {
   [chainId: number]: string
 } = {
+  1: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
+  10001: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
   5: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
 }
 
@@ -49,6 +53,18 @@ export const POWSWAP_DEPLOYMENTS: {
     }[]
   }
 } = {
+  1: {
+    masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
+    sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
+    powToken: POW_MAINNET,
+    pools: [],
+  },
+  10001: {
+    masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
+    sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
+    powToken: POW_ETHW,
+    pools: [],
+  },
   5: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
     sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
@@ -139,9 +155,6 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
 
   const powToken = chainId && POWSWAP_DEPLOYMENTS[chainId] ? POWSWAP_DEPLOYMENTS[chainId].powToken : null
 
-  // detect if staking is ended
-  const currentBlockTimestamp = useCurrentBlockTimestamp()
-
   const poolInfoArgs = Array.from(Array(pools.length).keys()).map((value) => [value])
   const poolInfos = useSingleContractMultipleData(MASTERCHEF_CONTRACT, 'poolInfo', poolInfoArgs)
 
@@ -160,6 +173,7 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
   const totalAllocPoint = useSingleCallResult(MASTERCHEF_CONTRACT, 'totalAllocPoint')
 
   const stakingInfo: StakingInfo[] = []
+  if (pools.length === 0) return []
 
   pools.forEach((pool, index) => {
     if (!chainId || !POWSWAP_DEPLOYMENTS[chainId]) return

@@ -39,10 +39,10 @@ export function Countdown({ exactEnd }: { exactEnd?: Date }) {
   } else {
     const ongoing = timeUntilEnd >= 0
     if (ongoing) {
-      message = 'Rewards end in'
+      message = '10x Rewards end in'
       timeRemaining = timeUntilEnd
     } else {
-      message = 'Rewards have ended!'
+      message = '10x Rewards have ended!'
       timeRemaining = Infinity
     }
   }
