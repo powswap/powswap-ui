@@ -45,7 +45,7 @@ export default function RadialGradientByChainUpdater(): null {
           : 'radial-gradient(50% 50% at 50% 50%,#fc077d10 0,rgba(255,255,255,0) 100%)'
         const defaultDarkGradient = redesignFlagEnabled
           ? 'linear-gradient(180deg, #202738 0%, #070816 100%)'
-          : 'radial-gradient(50% 50% at 50% 50%,#fc077d10 0,rgba(255,255,255,0) 100%)'
+          : 'radial-gradient(50% 50% at 50% 50%,#203e39 0,rgba(255,255,255,0) 100%)'
         backgroundRadialGradientElement.style.background = darkMode ? defaultDarkGradient : defaultLightGradient
         backgroundRadialGradientElement.style.backgroundBlendMode = redesignFlagEnabled
           ? 'none'
