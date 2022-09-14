@@ -1,10 +1,10 @@
-import { TransactionResponse } from '@ethersproject/providers'
 import { Trans } from '@lingui/macro'
-import StakingRewardsJson from '@uniswap/liquidity-staker/build/StakingRewards.json'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
+import { abi as MASTERCHEF_ABI } from 'abis/MasterChef.json'
 import { useV2LiquidityTokenPermit } from 'hooks/useV2LiquidityTokenPermit'
+import JSBI from 'jsbi'
 import { useCallback, useState } from 'react'
 import styled from 'styled-components/macro'
 
@@ -12,8 +12,6 @@ import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallbac
 import { useContract, usePairContract, useV2RouterContract } from '../../hooks/useContract'
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import { StakingInfo, useDerivedStakeInfo } from '../../state/stake/hooks'
-import { useTransactionAdder } from '../../state/transactions/hooks'
-import { TransactionType } from '../../state/transactions/types'
 import { CloseIcon, ThemedText } from '../../theme'
 import { formatCurrencyAmount } from '../../utils/formatCurrencyAmount'
 import { maxAmountSpend } from '../../utils/maxAmountSpend'
@@ -25,10 +23,8 @@ import { LoadingView, SubmittedView } from '../ModalViews'
 import ProgressCircles from '../ProgressSteps'
 import { RowBetween } from '../Row'
 
-const { abi: STAKING_REWARDS_ABI } = StakingRewardsJson
-
 function useStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean) {
-  return useContract(stakingAddress, STAKING_REWARDS_ABI, withSignerIfPossible)
+  return useContract(stakingAddress, MASTERCHEF_ABI, withSignerIfPossible)
 }
 
 const HypotheticalRewardRate = styled.div<{ dim: boolean }>`
@@ -74,7 +70,6 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
   }
 
   // state for pending and submitted txn views
-  const addTransaction = useTransactionAdder()
   const [attempting, setAttempting] = useState<boolean>(false)
   const [hash, setHash] = useState<string | undefined>()
   const wrappedOnDismiss = useCallback(() => {
@@ -101,32 +96,14 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
     setAttempting(true)
     if (stakingContract && parsedAmount && deadline) {
       if (approval === ApprovalState.APPROVED) {
-        await stakingContract.stake(`0x${parsedAmount.quotient.toString(16)}`, { gasLimit: 350000 })
-      } else if (signatureData) {
-        stakingContract
-          .stakeWithPermit(
-            `0x${parsedAmount.quotient.toString(16)}`,
-            signatureData.deadline,
-            signatureData.v,
-            signatureData.r,
-            signatureData.s,
-            { gasLimit: 350000 }
-          )
-          .then((response: TransactionResponse) => {
-            addTransaction(response, {
-              type: TransactionType.DEPOSIT_LIQUIDITY_STAKING,
-              token0Address: stakingInfo.tokens[0].address,
-              token1Address: stakingInfo.tokens[1].address,
-            })
-            setHash(response.hash)
-          })
-          .catch((error: any) => {
-            setAttempting(false)
-            console.log(error)
-          })
+        await stakingContract.deposit(
+          `0x${JSBI.BigInt(stakingInfo.poolId).toString(16)}`,
+          `0x${parsedAmount.quotient.toString(16)}`,
+          { gasLimit: 350000 }
+        )
       } else {
         setAttempting(false)
-        throw new Error('Attempting to stake without approval or a signature. Please contact support.')
+        throw new Error('Attempting to stake without approval. Please contact support.')
       }
     }
   }
@@ -147,18 +124,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
     if (!pairContract || !provider || !deadline) throw new Error('missing dependencies')
     if (!parsedAmount) throw new Error('missing liquidity amount')
 
-    if (gatherPermitSignature) {
-      try {
-        await gatherPermitSignature()
-      } catch (error) {
-        // try to approve if gatherPermitSignature failed for any reason other than the user rejecting it
-        if (error?.code !== 4001) {
-          await approveCallback()
-        }
-      }
-    } else {
-      await approveCallback()
-    }
+    await approveCallback()
   }
 
   return (

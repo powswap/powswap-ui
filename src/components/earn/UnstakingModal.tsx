@@ -1,14 +1,13 @@
-import { TransactionResponse } from '@ethersproject/providers'
 import { Trans } from '@lingui/macro'
-import StakingRewardsJson from '@uniswap/liquidity-staker/build/StakingRewards.json'
 import { useWeb3React } from '@web3-react/core'
+import { abi as MASTERCHEF_ABI } from 'abis/MasterChef.json'
+import JSBI from 'jsbi'
 import { ReactNode, useState } from 'react'
 import styled from 'styled-components/macro'
 
 import { useContract } from '../../hooks/useContract'
 import { StakingInfo } from '../../state/stake/hooks'
 import { useTransactionAdder } from '../../state/transactions/hooks'
-import { TransactionType } from '../../state/transactions/types'
 import { CloseIcon, ThemedText } from '../../theme'
 import { ButtonError } from '../Button'
 import { AutoColumn } from '../Column'
@@ -17,10 +16,8 @@ import Modal from '../Modal'
 import { LoadingView, SubmittedView } from '../ModalViews'
 import { RowBetween } from '../Row'
 
-const { abi: STAKING_REWARDS_ABI } = StakingRewardsJson
-
 function useStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean) {
-  return useContract(stakingAddress, STAKING_REWARDS_ABI, withSignerIfPossible)
+  return useContract(stakingAddress, MASTERCHEF_ABI, withSignerIfPossible)
 }
 
 const ContentWrapper = styled(AutoColumn)`
@@ -53,20 +50,11 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
   async function onWithdraw() {
     if (stakingContract && stakingInfo?.stakedAmount) {
       setAttempting(true)
-      await stakingContract
-        .exit({ gasLimit: 300000 })
-        .then((response: TransactionResponse) => {
-          addTransaction(response, {
-            type: TransactionType.WITHDRAW_LIQUIDITY_STAKING,
-            token0Address: stakingInfo.tokens[0].address,
-            token1Address: stakingInfo.tokens[1].address,
-          })
-          setHash(response.hash)
-        })
-        .catch((error: any) => {
-          setAttempting(false)
-          console.log(error)
-        })
+      await stakingContract.withdraw(
+        `0x${JSBI.BigInt(stakingInfo.poolId).toString(16)}`,
+        `0x${stakingInfo.stakedAmount.quotient.toString(16)}`,
+        { gasLimit: 350000 }
+      )
     }
   }
 
@@ -104,12 +92,12 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
               </ThemedText.DeprecatedBody>
               <ThemedText.DeprecatedBody>
-                <Trans>Unclaimed UNI</Trans>
+                <Trans>Unclaimed POW</Trans>
               </ThemedText.DeprecatedBody>
             </AutoColumn>
           )}
           <ThemedText.DeprecatedSubHeader style={{ textAlign: 'center' }}>
-            <Trans>When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool.</Trans>
+            <Trans>When you withdraw, your POW is claimed and your liquidity is removed from the mining pool.</Trans>
           </ThemedText.DeprecatedSubHeader>
           <ButtonError disabled={!!error} error={!!error && !!stakingInfo?.stakedAmount} onClick={onWithdraw}>
             {error ?? <Trans>Withdraw & Claim</Trans>}
@@ -123,7 +111,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <Trans>Withdrawing {stakingInfo?.stakedAmount?.toSignificant(4)} UNI-V2</Trans>
             </ThemedText.DeprecatedBody>
             <ThemedText.DeprecatedBody fontSize={20}>
-              <Trans>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} UNI</Trans>
+              <Trans>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} POW</Trans>
             </ThemedText.DeprecatedBody>
           </AutoColumn>
         </LoadingView>
@@ -138,7 +126,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <Trans>Withdrew UNI-V2!</Trans>
             </ThemedText.DeprecatedBody>
             <ThemedText.DeprecatedBody fontSize={20}>
-              <Trans>Claimed UNI!</Trans>
+              <Trans>Claimed POW!</Trans>
             </ThemedText.DeprecatedBody>
           </AutoColumn>
         </SubmittedView>

@@ -101,6 +101,8 @@ export const STAKING_REWARDS_INFO: {
 export interface StakingInfo {
   // the address of the reward contract
   stakingRewardAddress: string
+  // the pool id
+  poolId: number
   // the tokens involved in this pair
   tokens: [Token, Token]
   // the amount of token currently staked, or undefined if no account
@@ -206,6 +208,7 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
 
     stakingInfo.push({
       stakingRewardAddress: MASTERCHEF_CONTRACT?.address || '',
+      poolId: index,
       tokens: [pool.token0, pool.token1],
       periodFinish: undefined,
       earnedAmount,
@@ -349,6 +352,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
 
         memo.push({
           stakingRewardAddress: rewardsAddress,
+          poolId: 0,
           tokens: info[index].tokens,
           periodFinish: periodFinishMs > 0 ? new Date(periodFinishMs) : undefined,
           earnedAmount: CurrencyAmount.fromRawAmount(uni, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
