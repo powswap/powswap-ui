@@ -25,6 +25,7 @@ import {
   POW_ETHW,
   POW_GOERLI,
   POW_MAINNET,
+  SHIB_ETHW,
   UNI,
   UNI_GOERLI,
   USDC_MAINNET,
@@ -50,6 +51,7 @@ export const POWSWAP_DEPLOYMENTS: {
       lpTokenAddress: string
       token0: Token
       token1: Token
+      active: boolean
     }[]
   }
 } = {
@@ -63,7 +65,20 @@ export const POWSWAP_DEPLOYMENTS: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
     sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
     powToken: POW_ETHW,
-    pools: [],
+    pools: [
+      {
+        lpTokenAddress: '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
+        token0: SHIB_ETHW,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
+        active: false,
+      },
+      {
+        lpTokenAddress: '0x811beEd0119b4AfCE20D2583EB608C6F7AF1954f',
+        token0: SHIB_ETHW,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
+        active: true,
+      },
+    ],
   },
   5: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
@@ -74,11 +89,13 @@ export const POWSWAP_DEPLOYMENTS: {
         lpTokenAddress: '0x28cee28a7C4b4022AC92685C07d2f33Ab1A0e122',
         token0: UNI_GOERLI,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
+        active: true,
       },
       {
         lpTokenAddress: '0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb',
         token0: POW_GOERLI,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
+        active: false,
       },
     ],
   },
@@ -184,6 +201,8 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
     if (!chainId || !POWSWAP_DEPLOYMENTS[chainId]) return
     if (!poolInfos[index].result || !poolBalances[index].result || !totalAllocPoint.result) return
     if (!powToken) return
+    if (!pool.active) return
+
     const totalRewardPerBlock = JSBI.multiply(
       POWSWAP_DEPLOYMENTS[chainId].sushiPerBlock,
       JSBI.divide(JSBI.BigInt(poolInfos[index].result?.at(1)), JSBI.BigInt(totalAllocPoint.result[0]))
