@@ -16,6 +16,7 @@ import {
   renBTC,
   rETH2,
   sETH2,
+  SHIB_ETHW,
   SWISE,
   TRIBE,
   USDC_MAINNET,
@@ -89,6 +90,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.ETHW]: [
     nativeOnChain(SupportedChainId.ETHW),
     POW_ETHW,
+    SHIB_ETHW,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
   ],
   [SupportedChainId.GOERLI]: [

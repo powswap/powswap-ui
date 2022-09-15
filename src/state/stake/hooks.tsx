@@ -75,6 +75,11 @@ export const POWSWAP_DEPLOYMENTS: {
         token0: UNI_GOERLI,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
       },
+      {
+        lpTokenAddress: '0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb',
+        token0: POW_GOERLI,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
+      },
     ],
   },
 }
