@@ -209,9 +209,12 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
     if (!powToken) return
     if (!pool.active) return
 
-    const totalRewardPerBlock = JSBI.multiply(
-      POWSWAP_DEPLOYMENTS[chainId].sushiPerBlock,
-      JSBI.divide(JSBI.BigInt(poolInfos[index].result?.at(1)), JSBI.BigInt(totalAllocPoint.result[0]))
+    const allocPointFraction1000 =
+      (poolInfos[index].result?.at(1).toNumber() / totalAllocPoint.result[0].toNumber()) * 1000
+
+    const totalRewardPerBlock = JSBI.divide(
+      JSBI.multiply(POWSWAP_DEPLOYMENTS[chainId].sushiPerBlock, JSBI.BigInt(Math.round(allocPointFraction1000))),
+      JSBI.BigInt(1000)
     )
 
     const dummyPair = new Pair(

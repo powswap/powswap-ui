@@ -117,7 +117,7 @@ export default function Earn() {
           ) : (
             stakingInfos?.map((stakingInfo) => {
               // need to sort by added liquidity here
-              return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} />
+              return <PoolCard key={stakingInfo.poolId} stakingInfo={stakingInfo} />
             })
           )}
         </PoolSection>
