@@ -208,6 +208,8 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
     if (!poolInfos[index].result || !poolBalances[index].result || !totalAllocPoint.result) return
     if (!powToken) return
     if (!pool.active) return
+    if (pairToFilterBy && pairToFilterBy.liquidityToken.address.toLowerCase() !== pool.lpTokenAddress.toLowerCase())
+      return
 
     const allocPointFraction1000 =
       (poolInfos[index].result?.at(1).toNumber() / totalAllocPoint.result[0].toNumber()) * 1000
@@ -272,7 +274,7 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
 }
 
 // gets the staking info from the network for the active chain id
-export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
+export function useStakingInfoOld(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useWeb3React()
 
   // detect if staking is ended

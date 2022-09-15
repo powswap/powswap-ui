@@ -20,7 +20,7 @@ import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
 import { BIG_INT_ZERO } from '../../constants/misc'
 import { useV2Pairs } from '../../hooks/useV2Pairs'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/connection/hooks'
-import { useStakingInfo } from '../../state/stake/hooks'
+import { useStakingInfoV2 } from '../../state/stake/hooks'
 import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
 import { ExternalLink, HideSmall, ThemedText } from '../../theme'
 
@@ -122,7 +122,7 @@ export default function Pool() {
   const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
 
   // show liquidity even if its deposited in rewards contract
-  const stakingInfo = useStakingInfo()
+  const stakingInfo = useStakingInfoV2()
   const stakingInfosWithBalance = stakingInfo?.filter((pool) =>
     JSBI.greaterThan(pool.stakedAmount.quotient, BIG_INT_ZERO)
   )
@@ -233,7 +233,7 @@ export default function Pool() {
                       (stakingPair, i) =>
                         stakingPair[1] && ( // skip pairs that arent loaded
                           <FullPositionCard
-                            key={stakingInfosWithBalance[i].stakingRewardAddress}
+                            key={stakingInfosWithBalance[i].poolId}
                             pair={stakingPair[1]}
                             stakedBalance={stakingInfosWithBalance[i].stakedAmount}
                           />
