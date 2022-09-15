@@ -78,6 +78,12 @@ export const POWSWAP_DEPLOYMENTS: {
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
+      {
+        lpTokenAddress: '0x766ceab865d8ce27d7adbf0cae26f48d2f5714d9',
+        token0: POW_ETHW,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
+        active: true,
+      },
     ],
   },
   5: {
