@@ -230,7 +230,7 @@ export default function Menu() {
               default:
                 return (
                   <MenuFlyout>
-                    <MenuItem href="https://powswap.org/">
+                    <MenuItem href="https://powswap.io/">
                       <div>
                         <Trans>About</Trans>
                       </div>
@@ -240,7 +240,7 @@ export default function Menu() {
                       <div>{darkMode ? <Trans>Light Theme</Trans> : <Trans>Dark Theme</Trans>}</div>
                       {darkMode ? <Moon opacity={0.6} size={16} /> : <Sun opacity={0.6} size={16} />}
                     </ToggleMenuItem>
-                    <MenuItem href="https://docs.powswap.org/">
+                    <MenuItem href="https://docs.powswap.io/">
                       <div>
                         <Trans>Docs</Trans>
                       </div>

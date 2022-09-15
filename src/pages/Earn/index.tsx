@@ -85,7 +85,7 @@ export default function Earn() {
               </RowBetween>{' '}
               <ExternalLink
                 style={{ color: theme.deprecated_white, textDecoration: 'underline' }}
-                href="https://docs.powswap.org"
+                href="https://docs.powswap.io"
                 target="_blank"
               >
                 <ThemedText.DeprecatedWhite fontSize={14}>
