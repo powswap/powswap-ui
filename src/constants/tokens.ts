@@ -45,13 +45,6 @@ export const USDC_MAINNET = new Token(
   'USDC',
   'USD//C'
 )
-export const USDC_ETHW = new Token(
-  SupportedChainId.ETHW,
-  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-  6,
-  'USDC',
-  'USD//C'
-)
 export const USDC_GOERLI = new Token(
   SupportedChainId.GOERLI,
   '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
@@ -80,11 +73,6 @@ export const DAI_ETHW = new Token(
   'DAI',
   'Dai Stablecoin'
 )
-export const USDC: { [chainId in SupportedChainId]: Token } = {
-  [SupportedChainId.MAINNET]: USDC_MAINNET,
-  [SupportedChainId.ETHW]: USDC_ETHW,
-  [SupportedChainId.GOERLI]: USDC_GOERLI,
-}
 export const USDT = new Token(
   SupportedChainId.MAINNET,
   '0xdAC17F958D2ee523a2206206994597C13D831ec7',
@@ -251,9 +239,5 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
 }
 
 export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedChainId]?: string } } = {
-  USDC: {
-    [SupportedChainId.MAINNET]: USDC_MAINNET.address,
-    [SupportedChainId.ETHW]: USDC_ETHW.address,
-    [SupportedChainId.GOERLI]: USDC_GOERLI.address,
-  },
+  USDC: {},
 }
