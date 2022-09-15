@@ -10,6 +10,9 @@ import {
   FRAX,
   FXS,
   nativeOnChain,
+  POW_ETHW,
+  POW_GOERLI,
+  POW_MAINNET,
   renBTC,
   rETH2,
   sETH2,
@@ -76,6 +79,7 @@ export const CUSTOM_BASES: { [chainId: number]: { [tokenAddress: string]: Token[
 export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.MAINNET]: [
     nativeOnChain(SupportedChainId.MAINNET),
+    POW_MAINNET,
     DAI,
     USDC_MAINNET,
     USDT,
@@ -83,15 +87,13 @@ export const COMMON_BASES: ChainCurrencyList = {
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
   ],
   [SupportedChainId.ETHW]: [
-    nativeOnChain(SupportedChainId.MAINNET),
-    DAI,
-    USDC_MAINNET,
-    USDT,
-    WBTC,
+    nativeOnChain(SupportedChainId.ETHW),
+    POW_ETHW,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
   ],
   [SupportedChainId.GOERLI]: [
     nativeOnChain(SupportedChainId.GOERLI),
+    POW_GOERLI,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
   ],
 }
@@ -106,6 +108,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     USDT,
     WBTC,
   ],
+  [SupportedChainId.ETHW]: [...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ETHW], POW_ETHW],
 }
 export const PINNED_PAIRS: { readonly [chainId: number]: [Token, Token][] } = {
   [SupportedChainId.MAINNET]: [
