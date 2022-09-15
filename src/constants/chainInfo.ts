@@ -48,7 +48,7 @@ const CHAIN_INFO: ChainInfoMap = {
   [SupportedChainId.ETHW]: {
     networkType: NetworkType.L1,
     docs: 'https://docs.powswap.io/',
-    explorer: 'https://etherscan.io/',
+    explorer: 'https://mainnet.ethwscan.com/',
     infoLink: 'https://powswap.io/',
     label: 'EthereumPoW',
     logoUrl: ethereumLogoUrl,
