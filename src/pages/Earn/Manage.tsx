@@ -229,7 +229,7 @@ export default function Manage() {
                 $borderRadius="8px"
                 width={'fit-content'}
                 as={Link}
-                to={`/add/${currencyA && currencyId(currencyA)}/${currencyB && currencyId(currencyB)}`}
+                to={`/add/v2/${currencyA && currencyId(currencyA)}/${currencyB && currencyId(currencyB)}`}
               >
                 <Trans>
                   Add {currencyA?.symbol}-{currencyB?.symbol} liquidity
