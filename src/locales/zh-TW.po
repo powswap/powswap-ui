@@ -57,7 +57,7 @@ msgstr "- 刪除接收人"
 #: src/pages/Earn/Manage.tsx
 #: src/pages/Earn/Manage.tsx
 msgid "0 UNI / week"
-msgstr "0 UNI 代幣 / 每周"
+msgstr "0 POW 代幣 / 每周"
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "25%"
@@ -360,7 +360,7 @@ msgstr "添加此代幣列表代表您信任其數據是正確的。任何人都
 #: src/components/WalletModal/index.tsx
 #: src/components/WalletModal/index.tsx
 msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the Uniswap <1>Protocol Disclaimer</1>."
-msgstr "連接錢包即表示您同意 Uniswap Labs 的 <0>服務條款</0> 並確認您已閱讀並理解 Uniswap <1>協議免責聲明</1>。"
+msgstr "連接錢包即表示您同意 Powswap Labs 的 <0>服務條款</0> 並確認您已閱讀並理解 Powswap <1>協議免責聲明</1>。"
 
 #: src/pages/Vote/styled.tsx
 msgid "Canceled"
@@ -403,24 +403,24 @@ msgstr "為 {0} 領取 <0/>"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
-msgstr "領取 UNI"
+msgid "Claim POW"
+msgstr "領取 POW"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
-msgstr "領取 UNI 代幣"
+msgid "Claim POW Token"
+msgstr "領取 POW 代幣"
 
 #: src/components/AccountDetails/TransactionSummary.tsx
-msgid "Claim UNI reward for {0}"
-msgstr "{0} 索取 UNI 獎勵"
+msgid "Claim POW reward for {0}"
+msgstr "{0} 索取 POW 獎勵"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Claim fees"
 msgstr "領取手續費"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "Claim your UNI tokens"
-msgstr "領取您的 UNI 代幣"
+msgid "Claim your POW tokens"
+msgstr "領取您的 POW 代幣"
 
 #: src/components/AccountDetailsV2/TransactionBody.tsx
 #: src/components/claim/AddressClaimModal.tsx
@@ -430,7 +430,7 @@ msgstr "已領取"
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
 msgid "Claimed UNI!"
-msgstr "已領取 UNI 代幣！"
+msgstr "已領取 POW 代幣！"
 
 #: src/components/claim/ClaimModal.tsx
 msgid "Claimed!"
@@ -444,12 +444,12 @@ msgstr "領取中"
 
 #: src/components/Header/index.tsx
 msgid "Claiming UNI"
-msgstr "正在領取 UNI 代幣"
+msgstr "正在領取 POW 代幣"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
 msgid "Claiming {0} UNI"
-msgstr "正在領取 {0} UNI 代幣"
+msgstr "正在領取 {0} POW 代幣"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Clear All"
@@ -705,7 +705,7 @@ msgstr "將代幣存入 {label} 網絡。"
 
 #: src/pages/Earn/index.tsx
 msgid "Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token."
-msgstr "存入您的流動池代幣以領取 UNI（Uniswap 的治理代幣）。"
+msgstr "存入您的流動池代幣以領取 POW（Powswap 的治理代幣）。"
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "Deposited liquidity:"
@@ -759,7 +759,7 @@ msgstr "看不到您的一些 v2 流動資金嗎？<0>將它手動導入。</0>"
 
 #: src/components/vote/DelegateModal.tsx
 msgid "Earned UNI tokens represent voting shares in Uniswap governance."
-msgstr "已賺取的 UNI 代幣代表了 Uniswap 治理中的投票份額。"
+msgstr "已賺取的 POW 代幣代表了 Powswap 治理中的投票份額。"
 
 #: src/components/FeeSelector/index.tsx
 msgid "Edit"
@@ -783,7 +783,7 @@ msgstr "輸入有效的兌換率滑點百分比"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission."
-msgstr "輸入地址來查看領取 UNI 代幣的資質。如果地址有任何可領取的 UNI，代幣將在提交領取申請後自動發送。"
+msgstr "輸入地址來查看領取 POW 代幣的資質。如果地址有任何可領取的 POW，代幣將在提交領取申請後自動發送。"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
@@ -896,11 +896,11 @@ msgstr "探索代幣"
 
 #: src/pages/Pool/CTACards.tsx
 msgid "Explore Uniswap Analytics."
-msgstr "探索 Uniswap 分析。"
+msgstr "探索 Powswap 分析。"
 
 #: src/components/Popups/FailedNetworkSwitchPopup.tsx
 msgid "Failed to switch networks from the Uniswap Interface. In order to use Uniswap on {0}, you must change the network in your wallet."
-msgstr "無法從 Uniswap 界面切換網絡。為了在 {0} 上使用 Uniswap，您必須更改錢包中的網絡。"
+msgstr "無法從 Powswap 界面切換網絡。為了在 {0} 上使用 Powswap，您必須更改錢包中的網絡。"
 
 #: src/components/NavBar/MenuDropdown.tsx
 msgid "Feature Flags"
@@ -1329,7 +1329,7 @@ msgstr "對費率感到滿意的話，請點擊“供應”鍵，到審查步驟
 
 #: src/pages/Vote/VotePage.tsx
 msgid "Only UNI votes that were self delegated or delegated to another address before block {0} are eligible for voting."
-msgstr "只有在 {0} 區塊編號之前已自行委托或委托給另一個區塊鏈地址的 UNI 代幣才有資格投票。"
+msgstr "只有在 {0} 區塊編號之前已自行委托或委托給另一個區塊鏈地址的 POW 代幣才有資格投票。"
 
 #: src/components/Header/NetworkSelector.tsx
 msgid "Optimism Bridge"
@@ -1551,11 +1551,11 @@ msgstr "閱讀更多"
 
 #: src/pages/Earn/index.tsx
 msgid "Read more about UNI"
-msgstr "了解有關 UNI 的更多資訊"
+msgstr "了解有關 POW 的更多資訊"
 
 #: src/pages/Vote/Landing.tsx
 msgid "Read more about Uniswap governance"
-msgstr "閱讀有關 Uniswap 治理的更多資訊"
+msgstr "閱讀有關 Powswap 治理的更多資訊"
 
 #: src/pages/Pool/v2.tsx
 msgid "Read more about providing liquidity"
@@ -1813,7 +1813,7 @@ msgstr "找不到符號"
 
 #: src/components/Popups/SurveyPopup.tsx
 msgid "Take a 10 minute survey to help us improve your experience in the Uniswap app."
-msgstr "進行 10 分鐘調查，以幫助我們改善您在 Uniswap 中的體驗。"
+msgstr "進行 10 分鐘調查，以幫助我們改善您在 Powswap 中的體驗。"
 
 #: src/components/Popups/SurveyPopup.tsx
 msgid "Tell us what you think ↗"
@@ -1821,7 +1821,7 @@ msgstr "告訴我們你的想法↗"
 
 #: src/components/Popups/ClaimPopup.tsx
 msgid "Thanks for being part of the Uniswap community <0/>"
-msgstr "感謝您加入 Uniswap 社區 <0/>"
+msgstr "感謝您加入 Powswap 社區 <0/>"
 
 #: src/components/FeeSelector/index.tsx
 msgid "The % you will earn in fees."
@@ -1829,7 +1829,7 @@ msgstr "您將賺取的手續費百分比。"
 
 #: src/utils/swapErrorToUserReadableMessage.tsx
 msgid "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
-msgstr "兌換交易不滿足 Uniswap 不變量 X × Y = K 的要求。這通常意味著您要兌換的代幣之一在代幣轉賬過程中帶有一些自定義代幣合約特性。"
+msgstr "兌換交易不滿足 Powswap 不變量 X × Y = K 的要求。這通常意味著您要兌換的代幣之一在代幣轉賬過程中帶有一些自定義代幣合約特性。"
 
 #: src/components/swap/AdvancedSwapDetails.tsx
 msgid "The amount you expect to receive at the current market price. You may receive less or more if the market price changes while your transaction is pending."
@@ -1845,7 +1845,7 @@ msgstr "該應用程序獲取鏈上數據並使用 Infura API 構建合約調用
 
 #: src/components/PrivacyPolicy/index.tsx
 msgid "The app fetches the optimal trade route from a Uniswap Labs server."
-msgstr "該應用程序從 Uniswap Labs 服務器獲取最佳交易路徑。"
+msgstr "該應用程序從 Powswap Labs 服務器獲取最佳交易路徑。"
 
 #: src/components/PrivacyPolicy/index.tsx
 msgid "The app logs anonymized usage statistics in order to improve over time."
@@ -1903,7 +1903,7 @@ msgstr "輸出代幣無法進行轉賬。輸出代幣可能有些問題。"
 
 #: src/utils/swapErrorToUserReadableMessage.tsx
 msgid "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "輸出代幣無法進行轉賬。輸出代幣可能有些問題。註：轉賬時帶扣除費用（fee-on-transfer）的代幣和會自動重新定價（rebase）的代幣都與Uniswap V3不相容。"
+msgstr "輸出代幣無法進行轉賬。輸出代幣可能有些問題。註：轉賬時帶扣除費用（fee-on-transfer）的代幣和會自動重新定價（rebase）的代幣都與Powswap V3不相容。"
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "The price of this pool is outside of your selected range. Your position is not currently earning fees."
@@ -1931,7 +1931,7 @@ msgstr "加載您的 {tokenSymbol} 餘額時出錯"
 
 #: src/components/ConnectedAccountBlocked/index.tsx
 msgid "This address is blocked on the Uniswap Labs interface because it is associated with one or more"
-msgstr "此地址在 Uniswap Labs 界面上被阻止，因為它與一個或多個相關聯"
+msgstr "此地址在 Powswap Labs 界面上被阻止，因為它與一個或多個相關聯"
 
 #: src/components/PrivacyPolicy/index.tsx
 msgid "This app uses the following third-party APIs:"
@@ -1955,7 +1955,7 @@ msgstr "此代幣未出現在激活的代幣列表中。請確保這是您想要
 
 #: src/components/SearchModal/BlockedToken.tsx
 msgid "This token is not supported in the Uniswap Labs app"
-msgstr "Uniswap Labs 應用程序不支持此代幣"
+msgstr "Powswap Labs 應用程序不支持此代幣"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "This tool will safely migrate your {0} liquidity to V3. The process is completely trustless thanks to the"
@@ -2069,16 +2069,16 @@ msgid "Turn On Expert Mode"
 msgstr "開啟專家模式"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "UNI has arrived"
-msgstr "UNI 代幣已到賬"
+msgid "POW has arrived"
+msgstr "POW 代幣已到賬"
 
 #: src/pages/Vote/Landing.tsx
-msgid "UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
-msgstr "UNI 代幣代表了 Uniswap 治理中的投票份額。您可以自行為提案進行投票，或將您的投票權委托給第三方。"
+msgid "POW tokens represent voting shares in Powswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
+msgstr "POW 代幣代表了 Powswap 治理中的投票份額。您可以自行為提案進行投票，或將您的投票權委托給第三方。"
 
 #: src/pages/RemoveLiquidity/index.tsx
-msgid "UNI {0}/{1} Burned"
-msgstr "UNI {0}/{1} 已銷毀"
+msgid "POW {0}/{1} Burned"
+msgstr "POW {0}/{1} 已銷毀"
 
 #: src/pages/Earn/Manage.tsx
 msgid "UNI-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page."
@@ -2090,8 +2090,8 @@ msgstr "UNI-V2 {0}-{1}"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Unclaimed UNI"
-msgstr "未被領取的 UNI 代幣"
+msgid "Unclaimed POW"
+msgstr "未被領取的 POW 代幣"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Unclaimed fees"
@@ -2118,20 +2118,20 @@ msgid "Uniswap Labs' Terms of Service"
 msgstr "Uniswap Labs 的服務條款"
 
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "Uniswap available in: <0>{0}</0>"
-msgstr "Uniswap 可選語言：<0>{0}</0>"
+msgid "Powswap available in: <0>{0}</0>"
+msgstr "Powswap 可選語言：<0>{0}</0>"
 
 #: src/components/vote/ProposalEmptyState.tsx
-msgid "Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote."
-msgstr "Uniswap 治理僅在 Layer 1 可用。將您的網絡切換到以太坊主網以查看提案和投票。"
+msgid "Powswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote."
+msgstr "Powswap 治理僅在 Layer 1 可用。將您的網絡切換到以太坊主網以查看提案和投票。"
 
 #: src/pages/Earn/index.tsx
-msgid "Uniswap liquidity mining"
-msgstr "Uniswap 流動資金挖礦"
+msgid "Powswap liquidity mining"
+msgstr "Powswap 流動資金挖礦"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "Uniswap migration contract↗"
-msgstr "Uniswap 遷移合約↗"
+msgid "Powswap migration contract↗"
+msgstr "Powswap 遷移合約↗"
 
 #: src/components/SearchModal/TokenImportCard.tsx
 msgid "Unknown Source"
@@ -2195,7 +2195,7 @@ msgstr "更新代幣列表"
 
 #: src/components/Settings/index.tsx
 msgid "Use the Uniswap Labs API to get faster quotes."
-msgstr "使用 Uniswap Labs API 獲得更快的報價。"
+msgstr "使用 Powswap Labs API 獲得更快的報價。"
 
 #: src/components/claim/ClaimModal.tsx
 msgid "User"
@@ -2346,8 +2346,8 @@ msgid "When you claim without withdrawing your liquidity remains in the mining p
 msgstr "當您領取獎勵但沒贖回流動資金時，流動資金仍然留在礦池內。"
 
 #: src/pages/Earn/Manage.tsx
-msgid "When you withdraw, the contract will automagically claim UNI on your behalf!"
-msgstr "當您贖回流動資金時，智能合約將自動為您領取 UNI 代幣！"
+msgid "When you withdraw, the contract will automagically claim POW on your behalf!"
+msgstr "當您贖回流動資金時，智能合約將自動為您領取 POW 代幣！"
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool."
@@ -2401,7 +2401,7 @@ msgstr "您正在創建一個流動池"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the current {0} price."
-msgstr "您是此 Uniswap V3 流動池的第一個流動資金提供者。您的流動資金將以當前的 {0} 兌換率遷移。"
+msgstr "您是此 Powswap V3 流動池的第一個流動資金提供者。您的流動資金將以當前的 {0} 兌換率遷移。"
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "You are the first liquidity provider."
@@ -2553,7 +2553,7 @@ msgstr "您的交易將出現在這裏..."
 
 #: src/pages/Earn/Manage.tsx
 msgid "Your unclaimed UNI"
-msgstr "您未領取的 UNI 代幣"
+msgstr "您未領取的 POW 代幣"
 
 #: src/components/swap/AdvancedSwapDetails.tsx
 msgid "after slippage"
@@ -2682,16 +2682,16 @@ msgstr "{0} 待處理"
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "{0} UNI"
-msgstr "{0} UNI"
+msgid "{0} POW"
+msgstr "{0} POW"
 
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/StakingModal.tsx
 #: src/pages/Earn/Manage.tsx
 #: src/pages/Earn/Manage.tsx
-msgid "{0} UNI / week"
-msgstr "{0} UNI /週"
+msgid "{0} POW / week"
+msgstr "{0} POW /週"
 
 #: src/components/earn/StakingModal.tsx
 msgid "{0} UNI-V2"
@@ -2772,11 +2772,11 @@ msgstr "{0}{1} 流動池代幣"
 
 #: src/components/claim/ClaimModal.tsx
 msgid "{SOCKS_AMOUNT} UNI"
-msgstr "{SOCKS_AMOUNT} UNI 代幣"
+msgstr "{SOCKS_AMOUNT} POW 代幣"
 
 #: src/components/claim/ClaimModal.tsx
 msgid "{USER_AMOUNT} UNI"
-msgstr "{USER_AMOUNT} UNI"
+msgstr "{USER_AMOUNT} POW"
 
 #: src/components/SearchModal/ManageLists.tsx
 msgid "{activeTokensOnThisChain} tokens"
