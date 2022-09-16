@@ -306,6 +306,10 @@ export default function Header() {
         <StyledNavLink data-cy="farm-nav-link" id={`farm-nav-link`} to={'/farm'}>
           <Trans>Farm</Trans>
         </StyledNavLink>
+        <StyledExternalLink id={`charts-nav-link`} href="https://dexscreener.com/ethereumpow/uniswap">
+          <Trans>Charts</Trans>
+          <sup>↗</sup>
+        </StyledExternalLink>
       </HeaderLinks>
 
       <HeaderControls>
