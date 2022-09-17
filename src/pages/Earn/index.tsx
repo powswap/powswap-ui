@@ -104,7 +104,7 @@ export default function Earn() {
           <ThemedText.DeprecatedMediumHeader style={{ marginTop: '0.5rem' }}>
             <Trans>Participating pools</Trans>
           </ThemedText.DeprecatedMediumHeader>
-          <Countdown exactEnd={new Date(2022, 9, 21)} />
+          <Countdown exactEnd={new Date(2022, 8, 21)} />
         </DataRow>
 
         <PoolSection>
