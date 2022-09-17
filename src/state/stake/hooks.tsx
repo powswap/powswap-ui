@@ -22,6 +22,7 @@ import { ReactNode, useMemo } from 'react'
 
 import {
   DAI,
+  HEX_ETHW,
   POW_ETHW,
   POW_GOERLI,
   POW_MAINNET,
@@ -81,6 +82,12 @@ export const POWSWAP_DEPLOYMENTS: {
       {
         lpTokenAddress: '0x766ceab865d8ce27d7adbf0cae26f48d2f5714d9',
         token0: POW_ETHW,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
+        active: true,
+      },
+      {
+        lpTokenAddress: '0x55D5c232D921B9eAA6b37b5845E439aCD04b4DBa',
+        token0: HEX_ETHW,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
