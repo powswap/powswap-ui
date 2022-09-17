@@ -116,6 +116,7 @@ export default function Earn() {
             </OutlineCard>
           ) : (
             stakingInfos?.map((stakingInfo) => {
+              if (stakingInfo.totalRewardRate.equalTo(0)) return undefined
               // need to sort by added liquidity here
               return <PoolCard key={stakingInfo.poolId} stakingInfo={stakingInfo} />
             })

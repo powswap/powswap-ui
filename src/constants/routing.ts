@@ -5,6 +5,7 @@ import { SupportedChainId } from './chains'
 import {
   AMPL,
   DAI,
+  DAI_ETHW,
   ETH2X_FLI,
   FEI,
   FRAX,
@@ -19,9 +20,11 @@ import {
   SHIB_ETHW,
   SWISE,
   TRIBE,
+  USDC_ETHW,
   USDC_MAINNET,
   USDT,
   WBTC,
+  WBTC_ETHW,
   WRAPPED_NATIVE_CURRENCY,
 } from './tokens'
 
@@ -49,7 +52,14 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     USDT,
     WBTC,
   ],
-  [SupportedChainId.ETHW]: [...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET], DAI, USDC_MAINNET, USDT, WBTC],
+  [SupportedChainId.ETHW]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ETHW],
+    DAI_ETHW,
+    USDC_ETHW,
+    USDC_ETHW,
+    WBTC_ETHW,
+    POW_ETHW,
+  ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [SupportedChainId.MAINNET]: {

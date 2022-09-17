@@ -38,6 +38,14 @@ export const SHIB_ETHW = new Token(
 
 export const HEX_ETHW = new Token(SupportedChainId.ETHW, '0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39', 8, 'HEX', 'HEX')
 
+export const HDRN_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0x3819f64f282bf135d62168C1e513280dAF905e06',
+  8,
+  'HDRN',
+  'Hedron'
+)
+
 export const UNI_GOERLI = new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')
 
 export const USDC_MAINNET = new Token(
@@ -49,6 +57,13 @@ export const USDC_MAINNET = new Token(
 )
 export const USDC_GOERLI = new Token(
   SupportedChainId.GOERLI,
+  '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
+  6,
+  'USDC',
+  'USD//C'
+)
+export const USDC_ETHW = new Token(
+  SupportedChainId.ETHW,
   '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
   6,
   'USDC',
