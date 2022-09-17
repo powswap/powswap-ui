@@ -94,10 +94,10 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
   if (totalSupplyOfStakingToken && stakingTokenPair) {
     // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
     valueOfTotalStakedAmountInWETH = CurrencyAmount.fromRawAmount(
-      WETH,
+      token1,
       JSBI.divide(
         JSBI.multiply(
-          JSBI.multiply(stakingInfo.totalStakedAmount.quotient, stakingTokenPair.reserveOf(WETH).quotient),
+          JSBI.multiply(stakingInfo.totalStakedAmount.quotient, stakingTokenPair.reserveOf(token1).quotient),
           JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
         ),
         totalSupplyOfStakingToken.quotient
@@ -129,7 +129,9 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
             <Trans>Total deposited</Trans>
           </ThemedText.DeprecatedWhite>
           <ThemedText.DeprecatedWhite>
-            <Trans>{valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH</Trans>
+            <Trans>
+              {valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} {currency1.symbol}
+            </Trans>
           </ThemedText.DeprecatedWhite>
         </RowBetween>
         <RowBetween>
