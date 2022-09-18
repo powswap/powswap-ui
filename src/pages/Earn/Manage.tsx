@@ -182,7 +182,9 @@ export default function Manage() {
             <ThemedText.DeprecatedBody fontSize={24} fontWeight={500}>
               {valueOfTotalStakedAmountInUSDC
                 ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-                : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+                : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ${
+                    currencyB?.symbol
+                  }`}
             </ThemedText.DeprecatedBody>
           </AutoColumn>
         </PoolData>
