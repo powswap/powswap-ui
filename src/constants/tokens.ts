@@ -46,6 +46,14 @@ export const HDRN_ETHW = new Token(
   'Hedron'
 )
 
+export const CBUSDT_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0x2ad7868ca212135c6119fd7ad1ce51cfc5702892',
+  6,
+  'cbUSDT',
+  'Chainge Bridged USDT'
+)
+
 export const UNI_GOERLI = new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')
 
 export const USDC_MAINNET = new Token(

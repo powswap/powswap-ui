@@ -4,6 +4,7 @@ import { Currency, Token } from '@uniswap/sdk-core'
 import { SupportedChainId } from './chains'
 import {
   AMPL,
+  CBUSDT_ETHW,
   DAI,
   DAI_ETHW,
   ETH2X_FLI,
@@ -59,6 +60,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     USDC_ETHW,
     WBTC_ETHW,
     POW_ETHW,
+    CBUSDT_ETHW,
   ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -97,7 +99,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     WBTC,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
   ],
-  [SupportedChainId.ETHW]: [nativeOnChain(SupportedChainId.ETHW), POW_ETHW, SHIB_ETHW],
+  [SupportedChainId.ETHW]: [nativeOnChain(SupportedChainId.ETHW), POW_ETHW, CBUSDT_ETHW, SHIB_ETHW],
   [SupportedChainId.GOERLI]: [
     nativeOnChain(SupportedChainId.GOERLI),
     POW_GOERLI,

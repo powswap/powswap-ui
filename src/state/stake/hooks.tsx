@@ -21,6 +21,7 @@ import tryParseCurrencyAmount from 'lib/utils/tryParseCurrencyAmount'
 import { ReactNode, useMemo } from 'react'
 
 import {
+  CBUSDT_ETHW,
   DAI,
   HDRN_ETHW,
   HEX_ETHW,
@@ -108,6 +109,12 @@ export const POWSWAP_DEPLOYMENTS: {
         lpTokenAddress: '0x46d00dabb109dc1a8961c2cd7f65c1579583da3e',
         token0: HDRN_ETHW,
         token1: POW_ETHW,
+        active: true,
+      },
+      {
+        lpTokenAddress: '0x8ae94b2f293ce713bd63041b792cf25c90dec0f6',
+        token0: CBUSDT_ETHW,
+        token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
     ],
