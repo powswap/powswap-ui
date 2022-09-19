@@ -249,7 +249,7 @@ function Row({
   return rowContent
 }
 
-const NETWORK_SELECTOR_CHAINS = [SupportedChainId.ETHW, SupportedChainId.MAINNET]
+const NETWORK_SELECTOR_CHAINS = [SupportedChainId.ETHW]
 
 export default function NetworkSelector() {
   const { chainId, provider } = useWeb3React()
