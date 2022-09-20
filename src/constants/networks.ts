@@ -8,14 +8,14 @@ if (typeof INFURA_KEY === 'undefined') {
 }
 
 export const MAINNET_PROVIDER = new JsonRpcProvider(
-  `https://eth-mainnet.g.alchemy.com/v2/2wngR8Qeij_bqaoy4VOPgdVhOfNvIDvE`
+  `https://eth-mainnet.g.alchemy.com/v2/9Y9jJYjbFdiPHw-lGJ0fJy9bpUyPexPy`
 )
 
 /**
  * These are the network URLs used by the interface when there is not another available source of chain data
  */
 export const RPC_URLS: { [key in SupportedChainId]: string } = {
-  [SupportedChainId.MAINNET]: `https://eth-mainnet.g.alchemy.com/v2/2wngR8Qeij_bqaoy4VOPgdVhOfNvIDvE`,
+  [SupportedChainId.MAINNET]: `https://eth-mainnet.g.alchemy.com/v2/9Y9jJYjbFdiPHw-lGJ0fJy9bpUyPexPy`,
   [SupportedChainId.ETHW]: `https://mainnet.ethereumpow.org`,
   [SupportedChainId.GOERLI]: `https://goerli.infura.io/v3/${INFURA_KEY}`,
 }
