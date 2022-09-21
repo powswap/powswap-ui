@@ -54,6 +54,22 @@ export const CBUSDT_ETHW = new Token(
   'Chainge Bridged USDT'
 )
 
+export const BUSDT_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0xB6334BeDf341d111525A1Db8fBE7805dE57De957',
+  18,
+  'bUSDT',
+  'BridgeTech USDT'
+)
+
+export const BUSDC_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0xC675FDBe260e1ee93106Ee596B916952a9344f44',
+  18,
+  'bUSDC',
+  'BridgeTech USDC'
+)
+
 export const UNI_GOERLI = new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')
 
 export const USDC_MAINNET = new Token(
