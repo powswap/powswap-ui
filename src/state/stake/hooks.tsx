@@ -1,9 +1,9 @@
 import { Interface } from '@ethersproject/abi'
 import { Contract } from '@ethersproject/contracts'
 import { Trans } from '@lingui/macro'
+import { Pair } from '@powswap/sdk'
 import { abi as STAKING_REWARDS_ABI } from '@uniswap/liquidity-staker/build/StakingRewards.json'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import ERC20ABI from 'abis/erc20.json'
 import { abi as MASTERCHEF_ABI } from 'abis/MasterChef.json'
@@ -139,7 +139,7 @@ export const POWSWAP_DEPLOYMENTS: {
     powToken: POW_GOERLI,
     pools: [
       {
-        lpTokenAddress: '0x28cee28a7C4b4022AC92685C07d2f33Ab1A0e122',
+        lpTokenAddress: '0x34BccF409438F3990aE156D7e68a44f4c328df9d',
         token0: UNI_GOERLI,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
         active: true,

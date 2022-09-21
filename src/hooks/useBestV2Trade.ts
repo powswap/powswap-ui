@@ -1,5 +1,5 @@
+import { Pair, Trade } from '@powswap/sdk'
 import { Currency, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
-import { Pair, Trade } from '@uniswap/v2-sdk'
 import { useMemo } from 'react'
 import { InterfaceTrade, TradeState } from 'state/routing/types'
 import { isTradeBetter } from 'utils/isTradeBetter'
@@ -18,7 +18,7 @@ function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): Pair[] {
       Object.values(
         allPairs
           // filter out invalid pairs
-          .filter((result): result is [PairState.EXISTS, Pair] => Boolean(result[0] === PairState.EXISTS && result[1]))
+          .filter((result): result is [PairState.EXISTS, Pair] => Boolean(result[1] !== null))
           .map(([, pair]) => pair)
       ),
     [allPairs]
@@ -72,6 +72,8 @@ export function useBestV2Trade(
     [tradeType, amountSpecified, otherCurrency]
   )
   const allowedPairs = useAllCommonPairs(currencyIn, currencyOut)
+
+  console.log(allowedPairs)
 
   return useMemo(() => {
     if (amountSpecified && currencyIn && currencyOut && allowedPairs.length > 0) {

@@ -1,6 +1,6 @@
+import { Pair } from '@powswap/sdk'
 import { Trade } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Fraction, Percent, TradeType } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
 import { FeeAmount } from '@uniswap/v3-sdk'
 import JSBI from 'jsbi'
 
@@ -48,7 +48,8 @@ export function computeRealizedLPFeePercent(trade: Trade<Currency, Currency, Tra
               pool instanceof Pair
                 ? // not currently possible given protocol check above, but not fatal
                   FeeAmount.MEDIUM
-                : pool.fee
+                : // @ts-ignore
+                  pool.fee
             return currentFee.multiply(ONE_HUNDRED_PERCENT.subtract(new Fraction(fee, 1_000_000)))
           }, ONE_HUNDRED_PERCENT)
         )

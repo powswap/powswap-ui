@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro'
+import { Pair } from '@powswap/sdk'
 import { Protocol } from '@uniswap/router-sdk'
 import { Currency, Percent, TradeType } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
 import { FeeAmount } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { ElementName, Event, EventName } from 'components/AmplitudeAnalytics/constants'
@@ -149,7 +149,7 @@ export function getTokenPath(trade: InterfaceTrade<Currency, Currency, TradeType
       const entry: RoutingDiagramEntry['path'][0] = [
         tokenIn,
         tokenOut,
-        nextPool instanceof Pair ? V2_DEFAULT_FEE_TIER : nextPool.fee,
+        nextPool instanceof Pair ? V2_DEFAULT_FEE_TIER : (nextPool as any).fee,
       ]
       path.push(entry)
     }

@@ -1,6 +1,6 @@
+import { Route as V2Route } from '@powswap/sdk'
 import { MixedRouteSDK, Trade } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Token, TradeType } from '@uniswap/sdk-core'
-import { Route as V2Route } from '@uniswap/v2-sdk'
 import { Route as V3Route } from '@uniswap/v3-sdk'
 
 export enum TradeState {
@@ -100,6 +100,7 @@ export class InterfaceTrade<
       outputAmount: CurrencyAmount<TOutput>
     }[]
   }) {
+    // @ts-ignore
     super(routes)
     this.blockNumber = blockNumber
     this.gasUseEstimateUSD = gasUseEstimateUSD

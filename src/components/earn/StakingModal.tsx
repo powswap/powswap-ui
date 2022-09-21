@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro'
+import { Pair } from '@powswap/sdk'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { abi as MASTERCHEF_ABI } from 'abis/MasterChef.json'
 import { useV2LiquidityTokenPermit } from 'hooks/useV2LiquidityTokenPermit'

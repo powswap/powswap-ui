@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro'
-import { Pair } from '@uniswap/v2-sdk'
+import { Pair } from '@powswap/sdk'
 import { useWeb3React } from '@web3-react/core'
 import { PageName } from 'components/AmplitudeAnalytics/constants'
 import { Trace } from 'components/AmplitudeAnalytics/Trace'
@@ -97,6 +97,8 @@ export default function Pool() {
     () => trackedTokenPairs.map((tokens) => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
     [trackedTokenPairs]
   )
+
+  console.log(tokenPairsWithLiquidityTokens)
   const liquidityTokens = useMemo(
     () => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken),
     [tokenPairsWithLiquidityTokens]
