@@ -1,6 +1,6 @@
 import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers'
+import { Protocol } from '@powswap/router-sdk'
 import { createApi, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
-import { Protocol } from '@uniswap/router-sdk'
 import { ChainId } from '@uniswap/smart-order-router'
 import { RPC_URLS } from 'constants/networks'
 import { getClientSideQuote, toSupportedChainId } from 'lib/hooks/routing/clientSideSmartOrderRouter'

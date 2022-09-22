@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro'
-import { Trade } from '@uniswap/router-sdk'
+import { Trade } from '@powswap/router-sdk'
 import { Currency, Percent, TradeType } from '@uniswap/sdk-core'
 import { ModalName } from 'components/AmplitudeAnalytics/constants'
 import { Trace } from 'components/AmplitudeAnalytics/Trace'

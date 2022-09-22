@@ -1,4 +1,4 @@
-import { Trade } from '@uniswap/router-sdk'
+import { Trade } from '@powswap/router-sdk'
 import { Currency, TradeType } from '@uniswap/sdk-core'
 
 /**

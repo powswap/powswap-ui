@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { JsonRpcProvider, TransactionResponse } from '@ethersproject/providers'
 // eslint-disable-next-line no-restricted-imports
 import { t, Trans } from '@lingui/macro'
-import { Trade } from '@uniswap/router-sdk'
+import { Trade } from '@powswap/router-sdk'
 import { Currency, TradeType } from '@uniswap/sdk-core'
 import { useMemo } from 'react'
 import { calculateGasMargin } from 'utils/calculateGasMargin'

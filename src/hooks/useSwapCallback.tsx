@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { Trade } from '@uniswap/router-sdk'
+import { Trade } from '@powswap/router-sdk'
 import { Currency, Percent, TradeType } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { SwapCallbackState, useSwapCallback as useLibSwapCallBack } from 'lib/hooks/swap/useSwapCallback'

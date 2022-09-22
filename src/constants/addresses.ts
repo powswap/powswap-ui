@@ -5,8 +5,8 @@ type AddressMap = { [chainId: number]: string }
 
 export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984')
 
-export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap('0x9f925386da8A215773761b5117Aee7970BcE0E68')
-export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x361CB198739d7A6D2fA55Ad098E3A59a4fDd2C9B')
+export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap('0x27830C1c30A23F73499A73Cd80D5a4D18e20aF39')
+export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xf2577A5288c827f2247f0AB5609A5e864B13E36B')
 
 /* V3 Contract Addresses */
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {}
@@ -17,8 +17,9 @@ export const MULTICALL_ADDRESS: AddressMap = {
   ...constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984'),
 }
 
+// goerli 0x5b25bdeAf49b688d3899A05Da95E11D65bCda4Db
 export const SWAP_ROUTER_ADDRESSES: AddressMap = {
-  ...constructSameAddressMap('0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45', []),
+  ...constructSameAddressMap('0x5b25bdeAf49b688d3899A05Da95E11D65bCda4Db', []),
 }
 
 /**

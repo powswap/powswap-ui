@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro'
+import { Protocol } from '@powswap/router-sdk'
 import { Pair } from '@powswap/sdk'
-import { Protocol } from '@uniswap/router-sdk'
 import { Currency, Percent, TradeType } from '@uniswap/sdk-core'
 import { FeeAmount } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'

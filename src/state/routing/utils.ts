@@ -1,5 +1,5 @@
+import { MixedRouteSDK, Protocol } from '@powswap/router-sdk'
 import { Pair, Route as V2Route } from '@powswap/sdk'
-import { MixedRouteSDK, Protocol } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Token, TradeType } from '@uniswap/sdk-core'
 import { FeeAmount, Pool, Route as V3Route } from '@uniswap/v3-sdk'
 

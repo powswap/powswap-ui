@@ -1,5 +1,5 @@
+import { Trade } from '@powswap/router-sdk'
 import { Pair } from '@powswap/sdk'
-import { Trade } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Fraction, Percent, TradeType } from '@uniswap/sdk-core'
 import { FeeAmount } from '@uniswap/v3-sdk'
 import JSBI from 'jsbi'

@@ -1,5 +1,5 @@
+import { Trade } from '@powswap/router-sdk'
 import { Pair, Route as V2Route } from '@powswap/sdk'
-import { Trade } from '@uniswap/router-sdk'
 import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core'
 import { FeeAmount, Pool, Route as V3Route } from '@uniswap/v3-sdk'
 import JSBI from 'jsbi'

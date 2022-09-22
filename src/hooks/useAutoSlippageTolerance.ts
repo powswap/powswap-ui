@@ -1,5 +1,5 @@
+import { MixedRoute, partitionMixedRouteByProtocol, Protocol, Trade } from '@powswap/router-sdk'
 import { Pair } from '@powswap/sdk'
-import { MixedRoute, partitionMixedRouteByProtocol, Protocol, Trade } from '@uniswap/router-sdk'
 import { Currency, CurrencyAmount, Percent, TradeType } from '@uniswap/sdk-core'
 import { Pool } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'
