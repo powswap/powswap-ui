@@ -241,13 +241,35 @@ export default function Pool() {
                           />
                         )
                     )}
+                    <ButtonSecondary>
+                      <RowBetween>
+                        <Trans>
+                          <ExternalLink href={'https://old.app.powswap.io/' + account}>
+                            Remove your old uniswap liquidty
+                          </ExternalLink>
+                          <span> ↗ </span>
+                        </Trans>
+                      </RowBetween>
+                    </ButtonSecondary>
                   </>
                 ) : (
-                  <EmptyProposals>
-                    <ThemedText.DeprecatedBody color={theme.deprecated_text3} textAlign="center">
-                      <Trans>No liquidity found.</Trans>
-                    </ThemedText.DeprecatedBody>
-                  </EmptyProposals>
+                  <>
+                    <EmptyProposals>
+                      <ThemedText.DeprecatedBody color={theme.deprecated_text3} textAlign="center">
+                        <Trans>No liquidity found.</Trans>
+                      </ThemedText.DeprecatedBody>
+                    </EmptyProposals>
+                    <ButtonSecondary>
+                      <RowBetween>
+                        <Trans>
+                          <ExternalLink href={'https://old.app.powswap.io/' + account}>
+                            Remove your old uniswap liquidty
+                          </ExternalLink>
+                          <span> ↗ </span>
+                        </Trans>
+                      </RowBetween>
+                    </ButtonSecondary>
+                  </>
                 )}
               </AutoColumn>
             </AutoColumn>
