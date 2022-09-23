@@ -244,7 +244,7 @@ export default function Pool() {
                     <ButtonSecondary>
                       <RowBetween>
                         <Trans>
-                          <ExternalLink href={'https://old.app.powswap.io/' + account}>
+                          <ExternalLink href={'https://old.app.powswap.io/#/pool?chain=ethereum_pow'}>
                             Remove your old uniswap liquidty
                           </ExternalLink>
                           <span> ↗ </span>
@@ -262,7 +262,7 @@ export default function Pool() {
                     <ButtonSecondary>
                       <RowBetween>
                         <Trans>
-                          <ExternalLink href={'https://old.app.powswap.io/' + account}>
+                          <ExternalLink href={'https://old.app.powswap.io/#/pool?chain=ethereum_pow'}>
                             Remove your old uniswap liquidty
                           </ExternalLink>
                           <span> ↗ </span>
