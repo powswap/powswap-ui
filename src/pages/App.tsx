@@ -29,6 +29,7 @@ import Manage from './Earn/Manage'
 import PoolV2 from './Pool/v2'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
+import Stake from './Stake'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import { LoadingTokenDetails } from './TokenDetails'
@@ -178,6 +179,8 @@ export default function App() {
                   {/* <Route path="claim" element={<OpenClaimAddressModalAndRedirectToSwap />} /> */}
                   <Route path="farm" element={<Earn />} />
                   <Route path="farm/:currencyIdA/:currencyIdB" element={<Manage />} />
+
+                  <Route path="stake" element={<Stake />} />
 
                   <Route path="send" element={<RedirectPathToSwapOnly />} />
                   <Route path="swap/:outputCurrency" element={<RedirectToSwap />} />
