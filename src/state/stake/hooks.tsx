@@ -62,13 +62,13 @@ export const POWSWAP_DEPLOYMENTS: {
 } = {
   1: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
-    sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
+    sushiPerBlock: JSBI.BigInt('1000000000000000000000'),
     powToken: POW_MAINNET,
     pools: [],
   },
   10001: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
-    sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
+    sushiPerBlock: JSBI.BigInt('1000000000000000000000'),
     powToken: POW_ETHW,
     pools: [
       {
@@ -78,55 +78,55 @@ export const POWSWAP_DEPLOYMENTS: {
         active: false,
       },
       {
-        lpTokenAddress: '0x811beEd0119b4AfCE20D2583EB608C6F7AF1954f',
+        lpTokenAddress: '0x0566690aB4A57F03b2716D55d83F88f5fe49C7F6',
         token0: SHIB_ETHW,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
       {
-        lpTokenAddress: '0x766ceab865d8ce27d7adbf0cae26f48d2f5714d9',
+        lpTokenAddress: '0xbC8FcFa04dDdaC6421229E08B24555a5bD9Ba8DF',
         token0: POW_ETHW,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
       {
-        lpTokenAddress: '0x55D5c232D921B9eAA6b37b5845E439aCD04b4DBa',
+        lpTokenAddress: '0x22708eCe66f074883B6A61ED0d1951Db69bF45c9',
         token0: HEX_ETHW,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
       {
-        lpTokenAddress: '0x98def63c15f03fc88852449b4973c9ded5b21ae2',
+        lpTokenAddress: '0x58f2e65E97D551944A6d18588A32824E09a7B9ce',
         token0: SHIB_ETHW,
         token1: POW_ETHW,
         active: true,
       },
       {
-        lpTokenAddress: '0x0513ad3a7acdf30e346d96ae927346c44a8a76f4',
+        lpTokenAddress: '0xE28738559705cD342E38f73e0d41beF166cAE5a2',
         token0: HEX_ETHW,
         token1: POW_ETHW,
         active: true,
       },
       {
-        lpTokenAddress: '0x46d00dabb109dc1a8961c2cd7f65c1579583da3e',
+        lpTokenAddress: '0xE347740aE32EcD9Fa8bF9e2cDD363e5eA25d4e92',
         token0: HDRN_ETHW,
         token1: POW_ETHW,
         active: true,
       },
       {
-        lpTokenAddress: '0x8ae94b2f293ce713bd63041b792cf25c90dec0f6',
+        lpTokenAddress: '0x0981C2667f4Ab3C1E025bFE171C382A11699dBe4',
         token0: CBUSDT_ETHW,
         token1: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ETHW] as Token,
         active: true,
       },
       {
-        lpTokenAddress: '0x469157b26118d4afa821af631e32192d6a8a3ca6',
+        lpTokenAddress: '0xFFd6931ba522c73110525a490D0bE9bedB0B294D',
         token0: POW_ETHW,
         token1: BUSDC_ETHW,
         active: true,
       },
       {
-        lpTokenAddress: '0xbe6c389eca5351efb667e75c5899f0dd6369f9ca',
+        lpTokenAddress: '0x21756F620738a2064B2584fdCb6146d1F4263038',
         token0: POW_ETHW,
         token1: BUSDT_ETHW,
         active: true,
@@ -135,7 +135,7 @@ export const POWSWAP_DEPLOYMENTS: {
   },
   5: {
     masterchefAddress: '0xb5B6B46EE6f6c93c41123F8edFD3F9506Fef6bf8',
-    sushiPerBlock: JSBI.multiply(JSBI.BigInt('1000000000000000000000'), JSBI.BigInt(10)),
+    sushiPerBlock: JSBI.BigInt('1000000000000000000000'),
     powToken: POW_GOERLI,
     pools: [
       {
