@@ -309,10 +309,7 @@ export default function Header() {
         <StyledNavLink data-cy="stake-nav-link" id={`stkea-nav-link`} to={'/stake'}>
           <Trans>Stake</Trans>
         </StyledNavLink>
-        <StyledExternalLink
-          id={`charts-nav-link`}
-          href="https://dexscreener.com/ethereumpow/f:0x62009bD6349A3A1d7f1bcC7C69492Cd26F1FBF75"
-        >
+        <StyledExternalLink id={`charts-nav-link`} href="https://dexscreener.com/ethereumpow/powswap">
           <Trans>Charts</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
