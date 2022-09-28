@@ -70,6 +70,14 @@ export const BUSDC_ETHW = new Token(
   'BridgeTech USDC'
 )
 
+export const TSUKAW_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0x70c7bc6d7efa2144495e2fbfa6513286ce304da4',
+  18,
+  'TSUKAW',
+  'Dejitaru Tsuka POW'
+)
+
 export const UNI_GOERLI = new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')
 
 export const USDC_MAINNET = new Token(
