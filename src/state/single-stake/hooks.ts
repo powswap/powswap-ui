@@ -58,8 +58,8 @@ export function usePowBarStats() {
   const totalPowStaked = useTokenBalance(SPOW_ETHW.address, POW_ETHW)
 
   const powToXPowRatio =
-    totalPowStaked != null && totalSPow != null && totalSPow.greaterThan(0)
-      ? totalPowStaked?.asFraction.divide(totalSPow.asFraction)
+    totalPowStaked != null && totalSPow != null && totalPowStaked.greaterThan(0)
+      ? totalSPow?.asFraction.divide(totalPowStaked.asFraction)
       : null
 
   return {
