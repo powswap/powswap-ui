@@ -222,10 +222,10 @@ export default function Stake() {
                 <ExternalLink
                   style={{ color: theme.deprecated_white, textDecoration: 'underline' }}
                   target="_blank"
-                  href="https://docs.powswap.io/"
+                  href="https://medium.com/@powswap/introducing-single-sided-staking-for-pow-680da52bdeb6"
                 >
                   <ThemedText.DeprecatedWhite fontSize={14}>
-                    <Trans>Read more about POW</Trans>
+                    <Trans>Read more about POW staking</Trans>
                   </ThemedText.DeprecatedWhite>
                 </ExternalLink>
               </AutoColumn>
