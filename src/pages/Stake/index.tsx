@@ -210,9 +210,10 @@ export default function Stake() {
                 <RowBetween>
                   <ThemedText.DeprecatedWhite fontSize={14}>
                     <Trans>
-                      With Powswap, 0.25% of trading fees go directly to the active liquidity providers, while the
-                      remaining 0.05% get converted back to $POW (obviously through Powswap). Stake your POW tokens to
-                      earn trading fees.
+                      0.05% of every trade on the PowSwap DEX will be used to buy back POW and be distributed to POW
+                      stakers proportionally based on their share of the staking pool. When you stake POW, you receive
+                      sPOW. Your sPOW is continuously compounding, and when you unstake you will receive all of your
+                      originally deposited POW and additional POW earned from fees.
                     </Trans>
                   </ThemedText.DeprecatedWhite>
                 </RowBetween>
