@@ -28,6 +28,14 @@ export const POW_ETHW = new Token(
   'Powswap'
 )
 
+export const SPOW_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0x5Bb2de70EeE1aD7206927bA72281351F141bA594',
+  18,
+  'sPOW',
+  'Staked POW'
+)
+
 export const SHIB_ETHW = new Token(
   SupportedChainId.ETHW,
   '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',

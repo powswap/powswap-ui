@@ -73,8 +73,6 @@ export function useBestV2Trade(
   )
   const allowedPairs = useAllCommonPairs(currencyIn, currencyOut)
 
-  console.log(allowedPairs)
-
   return useMemo(() => {
     if (amountSpecified && currencyIn && currencyOut && allowedPairs.length > 0) {
       if (maxHops === 1) {

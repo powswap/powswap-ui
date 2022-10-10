@@ -1,5 +1,7 @@
 import { Trans } from '@lingui/macro'
 import { useWeb3React } from '@web3-react/core'
+import { PageName } from 'components/AmplitudeAnalytics/constants'
+import { Trace } from 'components/AmplitudeAnalytics/Trace'
 import { NavBarVariant, useNavBarFlag } from 'featureFlags/flags/navBar'
 import styled, { useTheme } from 'styled-components/macro'
 
@@ -64,65 +66,67 @@ export default function Earn() {
   )
 
   return (
-    <PageWrapper gap="lg" justify="center" navBarFlag={navBarFlagEnabled}>
-      <TopSection gap="md">
-        <DataCard>
-          <CardBGImage />
-          <CardNoise />
-          <CardSection>
-            <AutoColumn gap="md">
-              <RowBetween>
-                <ThemedText.DeprecatedWhite fontWeight={600}>
-                  <Trans>Powswap liquidity mining</Trans>
-                </ThemedText.DeprecatedWhite>
-              </RowBetween>
-              <RowBetween>
-                <ThemedText.DeprecatedWhite fontSize={14}>
-                  <Trans>
-                    Deposit your Liquidity Provider tokens to receive POW, the POW!Swap protocol governance token.
-                  </Trans>
-                </ThemedText.DeprecatedWhite>
-              </RowBetween>{' '}
-              <ExternalLink
-                style={{ color: theme.deprecated_white, textDecoration: 'underline' }}
-                href="https://docs.powswap.io"
-                target="_blank"
-              >
-                <ThemedText.DeprecatedWhite fontSize={14}>
-                  <Trans>Read more about POW</Trans>
-                </ThemedText.DeprecatedWhite>
-              </ExternalLink>
-            </AutoColumn>
-          </CardSection>
-          <CardBGImage />
-          <CardNoise />
-        </DataCard>
-      </TopSection>
+    <Trace page={PageName.FARM_PAGE} shouldLogImpression>
+      <PageWrapper gap="lg" justify="center" navBarFlag={navBarFlagEnabled}>
+        <TopSection gap="md">
+          <DataCard>
+            <CardBGImage />
+            <CardNoise />
+            <CardSection>
+              <AutoColumn gap="md">
+                <RowBetween>
+                  <ThemedText.DeprecatedWhite fontWeight={600}>
+                    <Trans>Powswap liquidity mining</Trans>
+                  </ThemedText.DeprecatedWhite>
+                </RowBetween>
+                <RowBetween>
+                  <ThemedText.DeprecatedWhite fontSize={14}>
+                    <Trans>
+                      Deposit your Liquidity Provider tokens to receive POW, the POW!Swap protocol governance token.
+                    </Trans>
+                  </ThemedText.DeprecatedWhite>
+                </RowBetween>{' '}
+                <ExternalLink
+                  style={{ color: theme.deprecated_white, textDecoration: 'underline' }}
+                  href="https://docs.powswap.io"
+                  target="_blank"
+                >
+                  <ThemedText.DeprecatedWhite fontSize={14}>
+                    <Trans>Read more about POW</Trans>
+                  </ThemedText.DeprecatedWhite>
+                </ExternalLink>
+              </AutoColumn>
+            </CardSection>
+            <CardBGImage />
+            <CardNoise />
+          </DataCard>
+        </TopSection>
 
-      <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
-        <DataRow style={{ alignItems: 'baseline' }}>
-          <ThemedText.DeprecatedMediumHeader style={{ marginTop: '0.5rem' }}>
-            <Trans>Participating pools</Trans>
-          </ThemedText.DeprecatedMediumHeader>
-          <Countdown exactEnd={new Date(Date.UTC(2022, 8, 23, 6, 0, 0))} />
-        </DataRow>
+        <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
+          <DataRow style={{ alignItems: 'baseline' }}>
+            <ThemedText.DeprecatedMediumHeader style={{ marginTop: '0.5rem' }}>
+              <Trans>Participating pools</Trans>
+            </ThemedText.DeprecatedMediumHeader>
+            <Countdown exactEnd={new Date(Date.UTC(2022, 8, 23, 6, 0, 0))} />
+          </DataRow>
 
-        <PoolSection>
-          {stakingRewardsExist && stakingInfos?.length === 0 ? (
-            <Loader style={{ margin: 'auto' }} />
-          ) : !stakingRewardsExist || stakingInfos?.length === 0 ? (
-            <OutlineCard>
-              <Trans>No active pools</Trans>
-            </OutlineCard>
-          ) : (
-            stakingInfos?.map((stakingInfo) => {
-              if (stakingInfo.totalRewardRate.equalTo(0)) return undefined
-              // need to sort by added liquidity here
-              return <PoolCard key={stakingInfo.poolId} stakingInfo={stakingInfo} />
-            })
-          )}
-        </PoolSection>
-      </AutoColumn>
-    </PageWrapper>
+          <PoolSection>
+            {stakingRewardsExist && stakingInfos?.length === 0 ? (
+              <Loader style={{ margin: 'auto' }} />
+            ) : !stakingRewardsExist || stakingInfos?.length === 0 ? (
+              <OutlineCard>
+                <Trans>No active pools</Trans>
+              </OutlineCard>
+            ) : (
+              stakingInfos?.map((stakingInfo) => {
+                if (stakingInfo.totalRewardRate.equalTo(0)) return undefined
+                // need to sort by added liquidity here
+                return <PoolCard key={stakingInfo.poolId} stakingInfo={stakingInfo} />
+              })
+            )}
+          </PoolSection>
+        </AutoColumn>
+      </PageWrapper>
+    </Trace>
   )
 }

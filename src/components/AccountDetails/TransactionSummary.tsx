@@ -21,9 +21,11 @@ import {
   MigrateV2LiquidityToV3TransactionInfo,
   QueueTransactionInfo,
   RemoveLiquidityV3TransactionInfo,
+  StakeTransactionInfo,
   SubmitProposalTransactionInfo,
   TransactionInfo,
   TransactionType,
+  UnstakeTransactionInfo,
   VoteTransactionInfo,
   WithdrawLiquidityStakingTransactionInfo,
   WrapTransactionInfo,
@@ -85,6 +87,14 @@ function ClaimSummary({ info: { recipient, uniAmountRaw } }: { info: ClaimTransa
 
 function SubmitProposalTransactionSummary(_: { info: SubmitProposalTransactionInfo }) {
   return <Trans>Submit new proposal</Trans>
+}
+
+function StakeSummary(_: { info: StakeTransactionInfo }) {
+  return <Trans>Stake</Trans>
+}
+
+function UnstakeSummary(_: { info: UnstakeTransactionInfo }) {
+  return <Trans>Unstake</Trans>
 }
 
 function ApprovalSummary({ info }: { info: ApproveTransactionInfo }) {
@@ -359,5 +369,11 @@ export function TransactionSummary({ info }: { info: TransactionInfo }) {
 
     case TransactionType.SUBMIT_PROPOSAL:
       return <SubmitProposalTransactionSummary info={info} />
+
+    case TransactionType.STAKE:
+      return <StakeSummary info={info} />
+
+    case TransactionType.UNSTAKE:
+      return <UnstakeSummary info={info} />
   }
 }

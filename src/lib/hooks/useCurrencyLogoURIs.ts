@@ -7,29 +7,31 @@ import { WrappedTokenInfo } from 'state/lists/wrappedTokenInfo'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import { isCelo, nativeOnChain } from '../../constants/tokens'
 
-type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon'
+type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon' | 'ethw'
 
 function chainIdToNetworkName(networkId: SupportedChainId): Network {
   switch (networkId) {
     case SupportedChainId.MAINNET:
       return 'ethereum'
+    case SupportedChainId.ETHW:
+      return 'ethw'
     default:
       return 'ethereum'
   }
 }
 
-export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MAINNET): string {
+export function getNativeLogoURI(chainId: SupportedChainId): string {
   switch (chainId) {
     default:
       return EthereumLogo
   }
 }
 
-function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.MAINNET): string | void {
+function getTokenLogoURI(address: string, chainId: SupportedChainId): string | void {
   const networkName = chainIdToNetworkName(chainId)
-  const networksWithUrls = [SupportedChainId.MAINNET]
+  const networksWithUrls = [SupportedChainId.MAINNET, SupportedChainId.ETHW]
   if (networksWithUrls.includes(chainId)) {
-    return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
+    return `https://raw.githubusercontent.com/powswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
   }
 
   // Celo logo logo is hosted elsewhere.

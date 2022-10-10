@@ -35,6 +35,8 @@ export enum TransactionType {
   SUBMIT_PROPOSAL,
   QUEUE,
   EXECUTE,
+  STAKE,
+  UNSTAKE,
 }
 
 export interface BaseTransactionInfo {
@@ -168,6 +170,14 @@ export interface SubmitProposalTransactionInfo {
   type: TransactionType.SUBMIT_PROPOSAL
 }
 
+export interface StakeTransactionInfo {
+  type: TransactionType.STAKE
+}
+
+export interface UnstakeTransactionInfo {
+  type: TransactionType.UNSTAKE
+}
+
 export type TransactionInfo =
   | ApproveTransactionInfo
   | ExactOutputSwapTransactionInfo
@@ -187,6 +197,8 @@ export type TransactionInfo =
   | CollectFeesTransactionInfo
   | RemoveLiquidityV3TransactionInfo
   | SubmitProposalTransactionInfo
+  | StakeTransactionInfo
+  | UnstakeTransactionInfo
 
 export interface TransactionDetails {
   hash: string
