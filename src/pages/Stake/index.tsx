@@ -25,6 +25,7 @@ import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import { ExternalLink, ThemedText } from '../../theme'
 import { ClickableText, Dots } from '../Pool/styleds'
+import StakingAPRCard from './StakingAPRCard'
 
 const VoteCard = styled(DataCard)`
   background: radial-gradient(76.02% 75.41% at 1.84% 0%, #27ae60 0%, #000000 100%);
@@ -50,6 +51,7 @@ const DataRow = styled(RowBetween)`
 const TopSection = styled(AutoColumn)`
   max-width: 720px;
   width: 100%;
+  margin-top: 24px;
 `
 
 const PageWrapper = styled(AutoColumn)`
@@ -231,6 +233,10 @@ export default function Stake() {
             <CardBGImage />
             <CardNoise />
           </VoteCard>
+
+          <TopSection gap="md">
+            <StakingAPRCard />
+          </TopSection>
 
           <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
             <DataRow style={{ alignItems: 'baseline', gap: '10px', margin: 0 }}>
