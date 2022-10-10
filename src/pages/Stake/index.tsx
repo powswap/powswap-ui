@@ -8,6 +8,7 @@ import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/
 import { RowBetween } from '../../components/Row'
 import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
 import { ExternalLink, ThemedText } from '../../theme'
+import { Countdown } from './Countdown'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -31,6 +32,11 @@ const EmptyProposals = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+const DataRow = styled(RowBetween)`
+  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToSmall`
+flex-direction: column;
+`};
 `
 
 export default function Stake() {
@@ -76,9 +82,15 @@ export default function Stake() {
 
           <AutoColumn gap="lg" justify="center">
             <AutoColumn gap="md" style={{ width: '100%' }}>
+              <DataRow style={{ alignItems: 'baseline' }}>
+                <ThemedText.DeprecatedMediumHeader style={{ marginTop: '0.5rem' }}>
+                  <Trans>Single Staking</Trans>
+                </ThemedText.DeprecatedMediumHeader>
+              </DataRow>
+
               <EmptyProposals>
                 <ThemedText.DeprecatedBody color={theme.deprecated_text3} textAlign="center">
-                  <Trans>Single Staking coming soon...</Trans>
+                  <Countdown exactEnd={new Date(Date.UTC(2022, 9, 10, 18, 0, 0))} />
                 </ThemedText.DeprecatedBody>
               </EmptyProposals>
             </AutoColumn>
