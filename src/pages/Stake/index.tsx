@@ -233,7 +233,7 @@ export default function Stake() {
 
           <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
             <DataRow style={{ alignItems: 'baseline', gap: '10px', margin: 0 }}>
-              <StakePowDataCard label="Total TRI Staked">
+              <StakePowDataCard label="Total POW Staked">
                 <Row align="center" justifyContent="start">
                   <CurrencyLogo currency={POW_ETHW} size={'20px'} style={{ marginRight: '10px' }} />
                   <ThemedText.DeprecatedBlack fontWeight={400}>
@@ -241,7 +241,7 @@ export default function Stake() {
                   </ThemedText.DeprecatedBlack>
                 </Row>
               </StakePowDataCard>
-              <StakePowDataCard label="Balance xTRI">
+              <StakePowDataCard label="Balance sPOW">
                 <Row align="center" justifyContent="start">
                   <CurrencyLogo currency={SPOW_ETHW} size={'20px'} style={{ marginRight: '10px' }} />
                   <ThemedText.DeprecatedBlack fontWeight={400}>
@@ -249,7 +249,7 @@ export default function Stake() {
                   </ThemedText.DeprecatedBlack>
                 </Row>
               </StakePowDataCard>
-              <StakePowDataCard label="Unstaked TRI">
+              <StakePowDataCard label="Unstaked POW">
                 <Row align="center" justifyContent="start">
                   <CurrencyLogo currency={POW_ETHW} size={'20px'} style={{ marginRight: '10px' }} />
                   <ThemedText.DeprecatedBlack fontWeight={400}>
