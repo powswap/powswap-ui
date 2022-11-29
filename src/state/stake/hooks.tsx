@@ -271,8 +271,11 @@ export function useStakingInfoV2(pairToFilterBy?: Pair | null): StakingInfo[] {
     if (pairToFilterBy && pairToFilterBy.liquidityToken.address.toLowerCase() !== pool.lpTokenAddress.toLowerCase())
       return
 
-    const allocPointFraction1000 =
-      (poolInfos[index].result?.at(1).toNumber() / totalAllocPoint.result[0].toNumber()) * 1000
+    let allocPointFraction1000 = 0
+
+    if (totalAllocPoint.result[0].toNumber() !== 0) {
+      allocPointFraction1000 = (poolInfos[index].result?.at(1).toNumber() / totalAllocPoint.result[0].toNumber()) * 1000
+    }
 
     const totalRewardPerBlock = JSBI.divide(
       JSBI.multiply(POWSWAP_DEPLOYMENTS[chainId].sushiPerBlock, JSBI.BigInt(Math.round(allocPointFraction1000))),
